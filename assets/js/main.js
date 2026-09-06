@@ -1,44 +1,92 @@
-// Hotfix responsivo: preserva a leitura completa dos cards promocionais no mobile.
-// Algumas artes possuem texto dentro da própria imagem; por isso, em telas menores,
-// elas devem ser exibidas inteiras em vez de recortadas por object-fit: cover.
-const responsiveCardFix = document.createElement('style');
-responsiveCardFix.setAttribute('data-responsive-card-fix', '');
-responsiveCardFix.textContent = `
+// Ajustes responsivos e microinteracoes da K.L Transporte Express.
+const runtimeStyles = document.createElement('style');
+runtimeStyles.setAttribute('data-runtime-ui-fixes', '');
+runtimeStyles.textContent = `
+  /* CTAs flutuantes: compactos por padrao e expansivos apenas com hover real. */
+  .whatsapp-float,
   .instagram-float {
-    position: fixed;
-    right: max(16px, env(safe-area-inset-right, 0px));
-    bottom: calc(78px + env(safe-area-inset-bottom, 0px));
-    z-index: 49;
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    min-height: 46px;
-    padding: 10px 15px;
-    border: 1px solid rgba(255,255,255,.16);
-    border-radius: 999px;
-    background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 55%, #fcb045 100%);
-    color: #fff;
-    font-weight: 800;
-    box-shadow: 0 18px 45px rgba(0,0,0,.34);
-    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    position: fixed !important;
+    right: max(16px, env(safe-area-inset-right, 0px)) !important;
+    z-index: 50 !important;
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    min-height: 52px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    padding: 0 15px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    border-radius: 999px !important;
+    box-shadow: 0 16px 38px rgba(0,0,0,.30) !important;
+    transition: width .26s ease, transform .2s ease, box-shadow .2s ease, filter .2s ease !important;
+    box-sizing: border-box !important;
   }
-  .instagram-float:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 22px 55px rgba(0,0,0,.42);
-    filter: brightness(1.05);
+
+  .whatsapp-float {
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
   }
+
+  .instagram-float {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+    border: 1px solid rgba(255,255,255,.16) !important;
+    background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 55%, #fcb045 100%) !important;
+    color: #fff !important;
+    font-weight: 800 !important;
+  }
+
+  .whatsapp-float svg,
   .instagram-float svg {
-    width: 20px;
-    height: 20px;
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    flex: 0 0 22px !important;
+  }
+
+  .instagram-float svg {
     fill: none;
     stroke: currentColor;
     stroke-width: 1.9;
-    flex: 0 0 auto;
-  }
-  .instagram-float span {
-    font-size: .84rem;
   }
 
+  .whatsapp-float span,
+  .instagram-float span {
+    opacity: 0;
+    transform: translateX(8px);
+    pointer-events: none;
+    font-size: .88rem !important;
+    font-weight: 800 !important;
+    transition: opacity .16s ease, transform .2s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .whatsapp-float:hover,
+    .whatsapp-float:focus-visible {
+      width: 158px !important;
+      transform: translateX(-3px);
+      box-shadow: 0 20px 48px rgba(0,0,0,.36) !important;
+    }
+
+    .instagram-float:hover,
+    .instagram-float:focus-visible {
+      width: 148px !important;
+      transform: translateX(-3px);
+      box-shadow: 0 20px 48px rgba(0,0,0,.38) !important;
+      filter: brightness(1.04);
+    }
+
+    .whatsapp-float:hover span,
+    .whatsapp-float:focus-visible span,
+    .instagram-float:hover span,
+    .instagram-float:focus-visible span {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Credito da OT clicavel e discreto. */
   .site-footer small a {
     color: var(--accent);
     font-weight: 800;
@@ -51,6 +99,7 @@ responsiveCardFix.textContent = `
     text-underline-offset: 3px;
   }
 
+  /* Preserva a leitura completa das artes promocionais em tablet/mobile. */
   @media (max-width: 980px) {
     .vehicle-panel figure {
       height: auto !important;
@@ -71,7 +120,32 @@ responsiveCardFix.textContent = `
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 700px), (hover: none), (pointer: coarse) {
+    .whatsapp-float,
+    .instagram-float {
+      right: max(13px, env(safe-area-inset-right, 0px)) !important;
+      width: 48px !important;
+      height: 48px !important;
+      min-width: 48px !important;
+      min-height: 48px !important;
+      padding: 0 !important;
+      justify-content: center !important;
+      transform: none !important;
+    }
+
+    .whatsapp-float {
+      bottom: calc(13px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    .instagram-float {
+      bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    .whatsapp-float span,
+    .instagram-float span {
+      display: none !important;
+    }
+
     .proof-grid .proof-large,
     .proof-grid figure {
       height: auto !important;
@@ -99,73 +173,54 @@ responsiveCardFix.textContent = `
       font-size: .9rem;
       line-height: 1.4;
     }
-
-    .instagram-float {
-      right: max(14px, env(safe-area-inset-right, 0px));
-      bottom: calc(70px + env(safe-area-inset-bottom, 0px));
-      width: 46px;
-      height: 46px;
-      min-height: 46px;
-      padding: 0;
-      justify-content: center;
-    }
-    .instagram-float span {
-      display: none;
-    }
-    .instagram-float svg {
-      width: 22px;
-      height: 22px;
-    }
   }
 
   @media (max-width: 430px) {
-    .vehicle-panel figure {
-      height: auto !important;
-    }
-    .whatsapp-float {
-      padding: 10px 12px;
-      gap: 7px;
-    }
-    .whatsapp-float svg {
-      width: 19px;
-      height: 19px;
-    }
-    .whatsapp-float span {
-      font-size: .78rem;
+    .whatsapp-float,
+    .instagram-float {
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px !important;
+      min-height: 44px !important;
     }
     .instagram-float {
-      right: max(13px, env(safe-area-inset-right, 0px));
-      bottom: calc(66px + env(safe-area-inset-bottom, 0px));
-      width: 44px;
-      height: 44px;
-      min-height: 44px;
+      bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+    .whatsapp-float svg,
+    .instagram-float svg {
+      width: 20px !important;
+      height: 20px !important;
+      min-width: 20px !important;
+      flex-basis: 20px !important;
     }
   }
 `;
-document.head.appendChild(responsiveCardFix);
+document.head.appendChild(runtimeStyles);
 
-// Crédito da Olegario Tech direciona para o site oficial da OT.
+// Credito da Olegario Tech direciona para o site oficial da OT.
 const developerCredit = document.querySelector('.site-footer small');
 if (developerCredit) {
   developerCredit.innerHTML = 'Projeto desenvolvido pela <a href="https://olegariotech.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Conheça a Olegario Tech">Olegario Tech</a>.';
 }
 
-// CTA flutuante secundário para o Instagram oficial da K.L.
-const instagramButton = document.createElement('a');
-instagramButton.className = 'instagram-float';
-instagramButton.href = 'https://www.instagram.com/transporte_campinas?utm_source=qr&igsh=OTY5NjE4eW45anZz&igsi=OTY5NjE4eW45anZz';
-instagramButton.target = '_blank';
-instagramButton.rel = 'noopener';
-instagramButton.setAttribute('aria-label', 'Abrir Instagram da K.L Transporte Express');
-instagramButton.innerHTML = `
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-    <circle cx="12" cy="12" r="4"></circle>
-    <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle>
-  </svg>
-  <span>Instagram</span>
-`;
-document.body.appendChild(instagramButton);
+// CTA flutuante secundario para o Instagram oficial da K.L.
+if (!document.querySelector('.instagram-float')) {
+  const instagramButton = document.createElement('a');
+  instagramButton.className = 'instagram-float';
+  instagramButton.href = 'https://www.instagram.com/transporte_campinas?utm_source=qr&igsh=OTY5NjE4eW45anZz&igsi=OTY5NjE4eW45anZz';
+  instagramButton.target = '_blank';
+  instagramButton.rel = 'noopener';
+  instagramButton.setAttribute('aria-label', 'Abrir Instagram da K.L Transporte Express');
+  instagramButton.innerHTML = `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+      <circle cx="12" cy="12" r="4"></circle>
+      <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle>
+    </svg>
+    <span>Instagram</span>
+  `;
+  document.body.appendChild(instagramButton);
+}
 
 const form = document.querySelector('#quote-form');
 const serviceField = form?.querySelector('[name="servico"]');
@@ -178,7 +233,7 @@ const updateHeader = () => header?.classList.toggle('is-scrolled', window.scroll
 updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 
-// Revelação leve e performática por seção.
+// Revelacao leve e performatica por secao.
 const revealItems = document.querySelectorAll('.reveal');
 if (!reduceMotion && 'IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries, obs) => {
@@ -210,7 +265,7 @@ if (route) {
   }
 }
 
-// Seletor de veículos acessível e amigável para toque.
+// Seletor de veiculos acessivel e amigavel para toque.
 const selector = document.querySelector('[data-vehicle-selector]');
 if (selector) {
   const tabs = [...selector.querySelectorAll('[role="tab"]')];
@@ -246,7 +301,7 @@ if (selector) {
   });
 }
 
-// CTAs de serviço pré-selecionam o tipo no formulário.
+// CTAs de servico pre-selecionam o tipo no formulario.
 document.querySelectorAll('[data-service]').forEach((link) => {
   link.addEventListener('click', () => {
     if (!serviceField) return;
@@ -255,7 +310,7 @@ document.querySelectorAll('[data-service]').forEach((link) => {
   });
 });
 
-// Parallax sutil apenas em desktop com mouse; touch fica 100% estável.
+// Parallax sutil apenas em desktop com mouse; touch fica estavel.
 const parallaxStage = document.querySelector('[data-parallax-stage]');
 if (parallaxStage && finePointer && !reduceMotion) {
   const layers = [...parallaxStage.querySelectorAll('[data-parallax]')];
@@ -282,7 +337,7 @@ if (parallaxStage && finePointer && !reduceMotion) {
   });
 }
 
-// Formulário monta a mensagem pronta e abre o WhatsApp.
+// Formulario monta a mensagem pronta e abre o WhatsApp.
 if (form) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
