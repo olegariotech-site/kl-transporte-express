@@ -76,18 +76,28 @@ jobs:
           });
           NODE
 
-      - name: Commit optimized assets
+      - name: Point critical UI images to WebP
+        run: |
+          sed -i \
+            -e 's#assets/images/branding/kl-transporte-express-logo.png#assets/images/branding/kl-transporte-express-logo.webp#g' \
+            -e 's#assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.png#assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp#g' \
+            -e 's#assets/images/frota/motos/kl-moto-frete-fazer.png#assets/images/frota/motos/kl-moto-frete-fazer.webp#g' \
+            -e 's#assets/images/frota/kl-van-frente.png#assets/images/frota/kl-van-frente.webp#g' \
+            index.html
+
+      - name: Commit optimized assets and references
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
+            index.html \
             assets/images/branding/kl-transporte-express-logo.webp \
             assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp \
             assets/images/frota/motos/kl-moto-frete-fazer.webp \
             assets/images/frota/kl-van-frente.webp
           if git diff --cached --quiet; then
-            echo "No optimized assets changed."
+            echo "No optimized assets or references changed."
             exit 0
           fi
-          git commit -m "chore: add optimized WebP critical assets"
+          git commit -m "perf: use optimized WebP critical assets"
           git push origin HEAD:site-v1
