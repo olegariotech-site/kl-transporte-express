@@ -1,1 +1,0 @@
-Hotfix de responsividade para preservar a leitura completa dos cards promocionais no mobile (iOS/Android), evitando cortes por object-fit: cover.
