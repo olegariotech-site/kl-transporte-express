@@ -1,3 +1,78 @@
+// Hotfix responsivo: preserva a leitura completa dos cards promocionais no mobile.
+// Algumas artes possuem texto dentro da própria imagem; por isso, em telas menores,
+// elas devem ser exibidas inteiras em vez de recortadas por object-fit: cover.
+const responsiveCardFix = document.createElement('style');
+responsiveCardFix.setAttribute('data-responsive-card-fix', '');
+responsiveCardFix.textContent = `
+  @media (max-width: 980px) {
+    .vehicle-panel figure {
+      height: auto !important;
+      min-height: 0 !important;
+      background: #071421;
+    }
+    .vehicle-panel figure img {
+      width: 100%;
+      height: auto !important;
+      object-fit: contain !important;
+    }
+    .proof-grid .proof-large {
+      height: auto !important;
+    }
+    .proof-grid .proof-large img {
+      height: auto !important;
+      object-fit: contain !important;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .proof-grid .proof-large,
+    .proof-grid figure {
+      height: auto !important;
+      min-height: 0 !important;
+    }
+    .proof-grid figure::after {
+      display: none !important;
+    }
+    .proof-grid img {
+      width: 100%;
+      height: auto !important;
+      object-fit: contain !important;
+    }
+    .proof-grid figcaption {
+      position: static !important;
+      padding: 16px 18px 18px;
+      background: var(--surface);
+      gap: 6px;
+    }
+    .proof-grid figcaption strong {
+      font-size: 1.08rem;
+      line-height: 1.15;
+    }
+    .proof-grid figcaption span {
+      font-size: .9rem;
+      line-height: 1.4;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .vehicle-panel figure {
+      height: auto !important;
+    }
+    .whatsapp-float {
+      padding: 10px 12px;
+      gap: 7px;
+    }
+    .whatsapp-float svg {
+      width: 19px;
+      height: 19px;
+    }
+    .whatsapp-float span {
+      font-size: .78rem;
+    }
+  }
+`;
+document.head.appendChild(responsiveCardFix);
+
 const form = document.querySelector('#quote-form');
 const serviceField = form?.querySelector('[name="servico"]');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
