@@ -1,0 +1,93 @@
+name: Optimize critical images
+
+on:
+  push:
+    branches:
+      - site-v1
+    paths:
+      - .github/workflows/optimize-critical-images.yml
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: site-v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Sharp
+        run: npm install --no-save sharp@0.33.5
+
+      - name: Generate optimized WebP assets
+        run: |
+          node <<'NODE'
+          const sharp = require('sharp');
+          const fs = require('fs');
+          const path = require('path');
+
+          const assets = [
+            {
+              input: 'assets/images/branding/kl-transporte-express-logo.png',
+              output: 'assets/images/branding/kl-transporte-express-logo.webp',
+              width: 320,
+              quality: 90
+            },
+            {
+              input: 'assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.png',
+              output: 'assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp',
+              width: 1280,
+              quality: 80
+            },
+            {
+              input: 'assets/images/frota/motos/kl-moto-frete-fazer.png',
+              output: 'assets/images/frota/motos/kl-moto-frete-fazer.webp',
+              width: 640,
+              quality: 80
+            },
+            {
+              input: 'assets/images/frota/kl-van-frente.png',
+              output: 'assets/images/frota/kl-van-frente.webp',
+              width: 720,
+              quality: 82
+            }
+          ];
+
+          Promise.all(assets.map(async ({ input, output, width, quality }) => {
+            fs.mkdirSync(path.dirname(output), { recursive: true });
+            await sharp(input)
+              .rotate()
+              .resize({ width, withoutEnlargement: true })
+              .webp({ quality, effort: 6 })
+              .toFile(output);
+            const bytes = fs.statSync(output).size;
+            console.log(`${output}: ${(bytes / 1024).toFixed(1)} KB`);
+          })).catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
+          NODE
+
+      - name: Commit optimized assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            assets/images/branding/kl-transporte-express-logo.webp \
+            assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp \
+            assets/images/frota/motos/kl-moto-frete-fazer.webp \
+            assets/images/frota/kl-van-frente.webp
+          if git diff --cached --quiet; then
+            echo "No optimized assets changed."
+            exit 0
+          fi
+          git commit -m "chore: add optimized WebP critical assets"
+          git push origin HEAD:site-v1
