@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="K.L Transporte Express — entregas, fretes e transporte em Campinas e região. Moto, utilitário, caminhão e carreta. Solicite sua cotação pelo WhatsApp." />
-  <title>K.L Transporte Express | Campinas-SP</title>
+  <meta name="description" content="K.L Transporte Express — moto frete, utilitários, picapes, vans, caminhões e carretas em Campinas e região. Solicite sua cotação pelo WhatsApp." />
+  <meta name="theme-color" content="#07111f" />
+  <title>K.L Transporte Express | Fretes e transportes em Campinas-SP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
@@ -15,72 +16,168 @@
     <a class="brand" href="#inicio" aria-label="K.L Transporte Express - início">
       <img class="brand-logo" src="assets/images/branding/kl-transporte-express-logo.png" alt="K.L Transporte Express" />
     </a>
+
     <nav class="nav" aria-label="Navegação principal">
       <a href="#servicos">Serviços</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#frota">Frota</a>
+      <a href="#empresas">Empresas</a>
       <a href="#contato">Contato</a>
     </nav>
+
     <a class="button button-small" href="https://wa.me/5519981045820?text=Ol%C3%A1%2C%20K.L%20Transporte%20Express.%20Gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o." target="_blank" rel="noopener">Pedir orçamento</a>
   </header>
 
   <main>
     <section class="hero" id="inicio">
       <div class="hero-copy">
-        <h1>Da entrega urgente ao transporte de cargas.</h1>
-        <p>Moto, pickup, Fiorino, van/furgão, caminhão e carreta para atender sua necessidade em Campinas, região e rotas sob consulta.</p>
+        <h1>Transporte rápido para cada tamanho de necessidade.</h1>
+        <p>Moto, pickup, Fiorino, van/furgão, caminhão e carreta para Campinas, região e rotas sob consulta.</p>
+
         <div class="hero-actions">
           <a class="button" href="#cotacao">Solicitar orçamento</a>
-          <a class="button button-ghost" href="#servicos">Conhecer serviços</a>
+          <a class="button button-ghost" href="#frota">Ver a frota</a>
         </div>
-        <p class="hero-note">Sem tabela fixa: cada cotação considera rota, carga, veículo e condição do serviço.</p>
+
+        <p class="hero-note">Cada serviço recebe uma cotação nova conforme rota, carga, veículo necessário e condição da operação.</p>
       </div>
-      <figure class="hero-media">
-        <img src="assets/images/kl-van-hero.jpg" alt="Van da K.L Transporte Express" />
-      </figure>
+
+      <div class="hero-media" aria-label="Veículos utilizados pela K.L Transporte Express">
+        <figure class="hero-main-photo">
+          <img src="assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.png" alt="Caminhão da K.L Transporte Express" fetchpriority="high" decoding="async" />
+        </figure>
+        <figure class="hero-inset-photo">
+          <img src="assets/images/frota/motos/kl-moto-frete-fazer.png" alt="Moto utilizada pela K.L Transporte Express em serviços de moto frete" decoding="async" />
+        </figure>
+      </div>
     </section>
 
-    <section class="section" id="servicos">
+    <section class="section services" id="servicos">
       <div class="section-heading">
-        <h2>Transporte certo para cada necessidade.</h2>
-        <p>A K.L organiza o atendimento conforme volume, distância, urgência e tipo de carga.</p>
+        <h2>Do documento à carga de grande porte.</h2>
+        <p>A K.L direciona o veículo conforme volume, distância, urgência e tipo de mercadoria.</p>
       </div>
+
       <div class="services-grid">
-        <article class="service"><span>01</span><h3>Moto Frete</h3><p>Documentos, peças e pequenos volumes na cidade e em viagens.</p><a href="#cotacao">Solicitar cotação</a></article>
-        <article class="service"><span>02</span><h3>Pickup e Fiorino</h3><p>Volumes maiores, mercadorias e entregas que pedem mais espaço e flexibilidade.</p><a href="#cotacao">Solicitar cotação</a></article>
-        <article class="service"><span>03</span><h3>Van / Furgão</h3><p>Transporte dedicado para cargas médias, caixas, equipamentos e operações comerciais.</p><a href="#cotacao">Solicitar cotação</a></article>
-        <article class="service"><span>04</span><h3>Caminhão e Carreta</h3><p>Cargas maiores, operações especiais e rotas de maior porte, sempre sob consulta.</p><a href="#cotacao">Solicitar cotação</a></article>
+        <article class="service-card">
+          <img src="assets/images/frota/motos/kl-motoboy-express.png" alt="Moto frete da K.L Transporte Express" loading="lazy" decoding="async" />
+          <div class="service-body">
+            <span>01</span>
+            <h3>Moto Frete</h3>
+            <p>Documentos, peças e pequenos volumes com agilidade em Campinas, região e viagens sob consulta.</p>
+            <a href="#cotacao" data-service="Moto Frete">Solicitar cotação</a>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <img src="assets/images/frota/picapes/kl-picapes-utilitarios-operacao.png" alt="Picapes e utilitários da K.L Transporte Express" loading="lazy" decoding="async" />
+          <div class="service-body">
+            <span>02</span>
+            <h3>Pickup e Fiorino</h3>
+            <p>Mercadorias, equipamentos e volumes que pedem mais espaço e flexibilidade na operação.</p>
+            <a href="#cotacao" data-service="Pickup / Fiorino">Solicitar cotação</a>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <img src="assets/images/frota/kl-van-frente.png" alt="Van da K.L Transporte Express" loading="lazy" decoding="async" />
+          <div class="service-body">
+            <span>03</span>
+            <h3>Van / Furgão</h3>
+            <p>Transporte dedicado para cargas médias, caixas, equipamentos e operações comerciais.</p>
+            <a href="#cotacao" data-service="Van / Furgão">Solicitar cotação</a>
+          </div>
+        </article>
+
+        <article class="service-card service-card-featured">
+          <img src="assets/images/frota/caminhoes/kl-caminhao-carga-andaimes.png" alt="Caminhão da K.L Transporte Express transportando carga de grande porte" loading="lazy" decoding="async" />
+          <div class="service-body">
+            <span>04</span>
+            <h3>Caminhão e Carreta</h3>
+            <p>Grandes cargas, estruturas, operações industriais e rotas de maior porte, sempre sob consulta.</p>
+            <a href="#cotacao" data-service="Caminhão / Carreta">Solicitar cotação</a>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="section split" id="como-funciona">
-      <div>
+      <div class="split-copy">
         <h2>Orçamento simples. Atendimento direto.</h2>
-        <p>O site conduz o cliente para o mesmo processo que a K.L já usa no WhatsApp: coleta, destino, carga e cotação.</p>
+        <p>Você envia os dados essenciais e a K.L avalia a solução mais adequada para a sua operação.</p>
       </div>
+
       <ol class="steps">
         <li><strong>Informe a coleta</strong><span>Endereço e responsável pela retirada.</span></li>
         <li><strong>Informe o destino</strong><span>Endereço e responsável pelo recebimento.</span></li>
         <li><strong>Descreva a carga</strong><span>Tipo, peso e dimensões quando necessário.</span></li>
-        <li><strong>Receba a cotação</strong><span>A K.L avalia a melhor solução para a operação.</span></li>
+        <li><strong>Receba a cotação</strong><span>A K.L define veículo, rota e condição do serviço.</span></li>
       </ol>
+    </section>
+
+    <section class="section heavy-loads" aria-labelledby="grandes-cargas-title">
+      <div class="heavy-copy">
+        <h2 id="grandes-cargas-title">Grandes cargas pedem estrutura.</h2>
+        <p>Para operações de maior valor e complexidade, a K.L atua com caminhões e carretas em transportes dedicados e sob consulta.</p>
+        <a class="button" href="#cotacao" data-service="Caminhão / Carreta">Cotar transporte de carga</a>
+      </div>
+
+      <figure class="heavy-main">
+        <img src="assets/images/frota/caminhoes/kl-caminhao-carga-lona-noturna.png" alt="Carreta da K.L Transporte Express com carga protegida por lona" loading="lazy" decoding="async" />
+      </figure>
     </section>
 
     <section class="section fleet" id="frota">
       <div class="section-heading">
-        <h2>Estrutura real para serviço real.</h2>
-        <p>Fotos da operação entram como prova de capacidade, sem depender de banco de imagens genérico.</p>
+        <h2>Frota e operação em campo.</h2>
+        <p>Imagens da própria operação ajudam o cliente a entender a capacidade da K.L antes mesmo de chamar no WhatsApp.</p>
       </div>
-      <div class="fleet-gallery">
-        <img src="assets/images/kl-van-front.jpg" alt="Van branca usada em operações da K.L Transporte Express" />
-        <img src="assets/images/kl-cargo-space.jpg" alt="Compartimento de carga de van utilizada pela K.L Transporte Express" />
+
+      <div class="fleet-category">
+        <div class="fleet-title">
+          <h3>Motos</h3>
+          <p>Agilidade para entregas rápidas e pequenos volumes.</p>
+        </div>
+        <div class="media-grid media-grid-3">
+          <img src="assets/images/frota/motos/kl-frota-motos-operacao.png" alt="Frota de motos disponível para operações da K.L Transporte Express" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/motos/kl-moto-frete-estrada.png" alt="Moto da K.L Transporte Express em rota" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/motos/kl-moto-frete-fazer.png" alt="Moto utilizada em serviços de moto frete" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <div class="fleet-category">
+        <div class="fleet-title">
+          <h3>Utilitários e picapes</h3>
+          <p>Opções abertas e fechadas para diferentes tipos de mercadoria.</p>
+        </div>
+        <div class="media-grid media-grid-3">
+          <img src="assets/images/frota/picapes/kl-picapes-utilitarios-operacao.png" alt="Picapes e utilitários utilizados pela K.L Transporte Express" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/kl-van-frente.png" alt="Van fechada utilizada pela K.L Transporte Express" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/kl-van-traseira.png" alt="Área traseira de carga da van da K.L Transporte Express" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <div class="fleet-category fleet-category-trucks">
+        <div class="fleet-title">
+          <h3>Caminhões e carretas</h3>
+          <p>Operações de maior porte com diferentes perfis de carga.</p>
+        </div>
+        <div class="truck-rail" aria-label="Galeria de caminhões e carretas da K.L Transporte Express">
+          <img src="assets/images/frota/caminhoes/kl-caminhao-carga-andaimes.png" alt="Caminhão transportando andaimes" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/caminhoes/kl-caminhao-galpao-industrial.png" alt="Caminhão em operação dentro de galpão industrial" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/caminhoes/kl-caminhao-container.png" alt="Caminhão transportando contêiner" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/caminhoes/kl-caminhao-carregamento-concluido.png" alt="Caminhão após carregamento de mercadoria" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/caminhoes/kl-caminhao-estrutura-metalica-noturna.png" alt="Caminhão transportando estrutura metálica em operação noturna" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/caminhoes/kl-caminhao-carga-lona-noturna.png" alt="Carreta com carga protegida por lona em operação noturna" loading="lazy" decoding="async" />
+          <img src="assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.png" alt="Caminhão da K.L Transporte Express em área externa" loading="lazy" decoding="async" />
+        </div>
       </div>
     </section>
 
-    <section class="section business">
+    <section class="section business" id="empresas">
       <div>
         <h2>Sua empresa precisa de coletas e entregas recorrentes?</h2>
-        <p>Converse com a K.L sobre operações empresariais, rotas programadas e transporte dedicado.</p>
+        <p>Converse com a K.L sobre rotas programadas, atendimento empresarial e transporte dedicado.</p>
       </div>
       <a class="button" href="https://wa.me/5519981045820?text=Ol%C3%A1%2C%20K.L%20Transporte%20Express.%20Gostaria%20de%20conversar%20sobre%20atendimento%20empresarial." target="_blank" rel="noopener">Atendimento empresarial</a>
     </section>
@@ -88,18 +185,31 @@
     <section class="section quote" id="cotacao">
       <div class="section-heading">
         <h2>Peça sua cotação.</h2>
-        <p>Preencha os dados básicos e abra o WhatsApp com a solicitação organizada.</p>
+        <p>Preencha os dados básicos e abra o WhatsApp com a solicitação já organizada.</p>
       </div>
+
       <form id="quote-form" class="quote-form">
+        <label>Tipo de serviço
+          <select name="servico">
+            <option value="Não informado">Selecione</option>
+            <option value="Moto Frete">Moto Frete</option>
+            <option value="Pickup / Fiorino">Pickup / Fiorino</option>
+            <option value="Van / Furgão">Van / Furgão</option>
+            <option value="Caminhão / Carreta">Caminhão / Carreta</option>
+          </select>
+        </label>
+
         <label>Endereço de coleta<input name="coleta" required placeholder="Rua, número, bairro e cidade" /></label>
         <label>Responsável pela retirada<input name="retirada" placeholder="Nome ou setor" /></label>
         <label>Endereço de entrega<input name="entrega" required placeholder="Rua, número, bairro e cidade" /></label>
         <label>Responsável pelo recebimento<input name="recebimento" placeholder="Nome ou setor" /></label>
-        <label>Mercadoria<input name="mercadoria" required placeholder="Ex.: caixas, peça, documento..." /></label>
+        <label>Mercadoria<input name="mercadoria" required placeholder="Ex.: caixas, peça, documento, estrutura..." /></label>
+
         <div class="form-row">
           <label>Peso<input name="peso" placeholder="Ex.: 40 kg" /></label>
           <label>Dimensões<input name="dimensoes" placeholder="Ex.: 80 × 60 × 40 cm" /></label>
         </div>
+
         <label>Observações<textarea name="observacoes" rows="4" placeholder="Urgência, horário, cuidados especiais..."></textarea></label>
         <button class="button" type="submit">Enviar cotação no WhatsApp</button>
       </form>
@@ -107,11 +217,27 @@
   </main>
 
   <footer class="site-footer" id="contato">
-    <div><strong>K.L Transporte Express</strong><span>Bonfim · Campinas-SP</span></div>
-    <div><a href="tel:+5519981045820">(19) 98104-5820</a><a href="mailto:kltransporteexpress@gmail.com">kltransporteexpress@gmail.com</a></div>
-    <div><span>Seg–Sex · 08h–18h</span><span>Sáb · 08h–12h</span></div>
+    <div>
+      <strong>K.L Transporte Express</strong>
+      <span>Bonfim · Campinas-SP</span>
+    </div>
+    <div>
+      <a href="tel:+5519981045820">(19) 98104-5820</a>
+      <a href="mailto:kltransporteexpress@gmail.com">kltransporteexpress@gmail.com</a>
+      <a href="https://www.instagram.com/transporte_campinas/" target="_blank" rel="noopener">@transporte_campinas</a>
+    </div>
+    <div>
+      <span>Seg–Sex · 08h–18h</span>
+      <span>Sáb · 08h–12h</span>
+      <span>Dom · fechado</span>
+    </div>
     <small>Projeto desenvolvido pela Olegario Tech.</small>
   </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5519981045820?text=Ol%C3%A1%2C%20K.L%20Transporte%20Express.%20Gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Solicitar orçamento pelo WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.5 9.5 0 0 0-8.1 14.5L2.6 21l4.7-1.2A9.5 9.5 0 1 0 12 2Zm0 17.2a7.7 7.7 0 0 1-3.9-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A7.7 7.7 0 1 1 12 19.2Zm4.2-5.8c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.5.1-.2.2-.6.7-.7.9-.1.2-.3.2-.5.1-1.4-.7-2.4-1.5-3.3-2.9-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.5-.3Z"/></svg>
+    <span>Orçamento</span>
+  </a>
 
   <script src="assets/js/main.js"></script>
 </body>
