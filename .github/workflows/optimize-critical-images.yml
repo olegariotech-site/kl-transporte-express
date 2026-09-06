@@ -90,7 +90,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/images/**/*.webp assets/images/**/**/*.webp assets/images/**/**/**/*.webp
+          git add index.html
+          find assets/images -type f -name '*.webp' -print0 | xargs -0 git add --
           if git diff --cached --quiet; then
             echo "No optimized assets or references changed."
             exit 0
