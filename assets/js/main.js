@@ -1,4 +1,15 @@
 const form = document.querySelector('#quote-form');
+const serviceField = form?.querySelector('[name="servico"]');
+
+const serviceLinks = document.querySelectorAll('[data-service]');
+
+serviceLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    if (!serviceField) return;
+    const service = link.dataset.service;
+    if (service) serviceField.value = service;
+  });
+});
 
 if (form) {
   form.addEventListener('submit', (event) => {
@@ -10,6 +21,7 @@ if (form) {
     const message = [
       'Olá, K.L Transporte Express. Gostaria de solicitar uma cotação.',
       '',
+      `🚚 Serviço: ${value('servico')}`,
       `📍 Coleta: ${value('coleta')}`,
       `👤 Responsável pela retirada: ${value('retirada')}`,
       `📍 Entrega: ${value('entrega')}`,
