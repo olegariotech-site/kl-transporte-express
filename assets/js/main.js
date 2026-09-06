@@ -4,6 +4,41 @@
 const responsiveCardFix = document.createElement('style');
 responsiveCardFix.setAttribute('data-responsive-card-fix', '');
 responsiveCardFix.textContent = `
+  .instagram-float {
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right, 0px));
+    bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+    z-index: 49;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 46px;
+    padding: 10px 15px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 55%, #fcb045 100%);
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 18px 45px rgba(0,0,0,.34);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .instagram-float:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 55px rgba(0,0,0,.42);
+    filter: brightness(1.05);
+  }
+  .instagram-float svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    flex: 0 0 auto;
+  }
+  .instagram-float span {
+    font-size: .84rem;
+  }
+
   @media (max-width: 980px) {
     .vehicle-panel figure {
       height: auto !important;
@@ -52,6 +87,23 @@ responsiveCardFix.textContent = `
       font-size: .9rem;
       line-height: 1.4;
     }
+
+    .instagram-float {
+      right: max(14px, env(safe-area-inset-right, 0px));
+      bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+      width: 46px;
+      height: 46px;
+      min-height: 46px;
+      padding: 0;
+      justify-content: center;
+    }
+    .instagram-float span {
+      display: none;
+    }
+    .instagram-float svg {
+      width: 22px;
+      height: 22px;
+    }
   }
 
   @media (max-width: 430px) {
@@ -69,9 +121,33 @@ responsiveCardFix.textContent = `
     .whatsapp-float span {
       font-size: .78rem;
     }
+    .instagram-float {
+      right: max(13px, env(safe-area-inset-right, 0px));
+      bottom: calc(66px + env(safe-area-inset-bottom, 0px));
+      width: 44px;
+      height: 44px;
+      min-height: 44px;
+    }
   }
 `;
 document.head.appendChild(responsiveCardFix);
+
+// CTA flutuante secundário para o Instagram oficial da K.L.
+const instagramButton = document.createElement('a');
+instagramButton.className = 'instagram-float';
+instagramButton.href = 'https://www.instagram.com/transporte_campinas?utm_source=qr&igsh=OTY5NjE4eW45anZz&igsi=OTY5NjE4eW45anZz';
+instagramButton.target = '_blank';
+instagramButton.rel = 'noopener';
+instagramButton.setAttribute('aria-label', 'Abrir Instagram da K.L Transporte Express');
+instagramButton.innerHTML = `
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+    <circle cx="12" cy="12" r="4"></circle>
+    <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle>
+  </svg>
+  <span>Instagram</span>
+`;
+document.body.appendChild(instagramButton);
 
 const form = document.querySelector('#quote-form');
 const serviceField = form?.querySelector('[name="servico"]');
