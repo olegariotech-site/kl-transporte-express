@@ -39,6 +39,18 @@ responsiveCardFix.textContent = `
     font-size: .84rem;
   }
 
+  .site-footer small a {
+    color: var(--accent);
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .site-footer small a:hover,
+  .site-footer small a:focus-visible {
+    color: var(--accent-2);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   @media (max-width: 980px) {
     .vehicle-panel figure {
       height: auto !important;
@@ -131,6 +143,12 @@ responsiveCardFix.textContent = `
   }
 `;
 document.head.appendChild(responsiveCardFix);
+
+// Crédito da Olegario Tech direciona para o site oficial da OT.
+const developerCredit = document.querySelector('.site-footer small');
+if (developerCredit) {
+  developerCredit.innerHTML = 'Projeto desenvolvido pela <a href="https://olegariotech.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Conheça a Olegario Tech">Olegario Tech</a>.';
+}
 
 // CTA flutuante secundário para o Instagram oficial da K.L.
 const instagramButton = document.createElement('a');
