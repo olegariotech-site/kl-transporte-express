@@ -1,4 +1,4 @@
-name: Optimize critical images
+name: Optimize site images
 
 on:
   push:
@@ -35,33 +35,24 @@ jobs:
           const path = require('path');
 
           const assets = [
-            {
-              input: 'assets/images/branding/kl-transporte-express-logo.png',
-              output: 'assets/images/branding/kl-transporte-express-logo.webp',
-              width: 320,
-              quality: 90
-            },
-            {
-              input: 'assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.png',
-              output: 'assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp',
-              width: 1280,
-              quality: 80
-            },
-            {
-              input: 'assets/images/frota/motos/kl-moto-frete-fazer.png',
-              output: 'assets/images/frota/motos/kl-moto-frete-fazer.webp',
-              width: 640,
-              quality: 80
-            },
-            {
-              input: 'assets/images/frota/kl-van-frente.png',
-              output: 'assets/images/frota/kl-van-frente.webp',
-              width: 720,
-              quality: 82
-            }
+            ['assets/images/branding/kl-transporte-express-logo.png', 'assets/images/branding/kl-transporte-express-logo.webp', 320, 90],
+            ['assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.png', 'assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp', 1280, 80],
+            ['assets/images/frota/motos/kl-moto-frete-fazer.png', 'assets/images/frota/motos/kl-moto-frete-fazer.webp', 640, 80],
+            ['assets/images/frota/kl-van-frente.png', 'assets/images/frota/kl-van-frente.webp', 720, 82],
+            ['assets/images/frota/motos/kl-motoboy-express.png', 'assets/images/frota/motos/kl-motoboy-express.webp', 800, 82],
+            ['assets/images/frota/picapes/kl-picapes-utilitarios-operacao.png', 'assets/images/frota/picapes/kl-picapes-utilitarios-operacao.webp', 1100, 88],
+            ['assets/images/frota/caminhoes/kl-caminhao-carga-andaimes.png', 'assets/images/frota/caminhoes/kl-caminhao-carga-andaimes.webp', 1200, 82],
+            ['assets/images/frota/caminhoes/kl-caminhao-estrutura-metalica-noturna.png', 'assets/images/frota/caminhoes/kl-caminhao-estrutura-metalica-noturna.webp', 1200, 82],
+            ['assets/images/frota/caminhoes/kl-caminhao-carga-lona-noturna.png', 'assets/images/frota/caminhoes/kl-caminhao-carga-lona-noturna.webp', 1200, 82],
+            ['assets/images/frota/caminhoes/kl-caminhao-galpao-industrial.png', 'assets/images/frota/caminhoes/kl-caminhao-galpao-industrial.webp', 1200, 82],
+            ['assets/images/frota/caminhoes/kl-caminhao-container.png', 'assets/images/frota/caminhoes/kl-caminhao-container.webp', 1200, 82],
+            ['assets/images/frota/motos/kl-frota-motos-operacao.png', 'assets/images/frota/motos/kl-frota-motos-operacao.webp', 1100, 88],
+            ['assets/images/frota/kl-van-traseira.png', 'assets/images/frota/kl-van-traseira.webp', 720, 82],
+            ['assets/images/frota/caminhoes/kl-caminhao-carregamento-concluido.png', 'assets/images/frota/caminhoes/kl-caminhao-carregamento-concluido.webp', 1200, 82]
           ];
 
-          Promise.all(assets.map(async ({ input, output, width, quality }) => {
+          Promise.all(assets.map(async ([input, output, width, quality]) => {
+            if (!fs.existsSync(input)) throw new Error(`Missing source: ${input}`);
             fs.mkdirSync(path.dirname(output), { recursive: true });
             await sharp(input)
               .rotate()
@@ -76,28 +67,33 @@ jobs:
           });
           NODE
 
-      - name: Point critical UI images to WebP
+      - name: Point site images to WebP
         run: |
           sed -i \
             -e 's#assets/images/branding/kl-transporte-express-logo.png#assets/images/branding/kl-transporte-express-logo.webp#g' \
             -e 's#assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.png#assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp#g' \
             -e 's#assets/images/frota/motos/kl-moto-frete-fazer.png#assets/images/frota/motos/kl-moto-frete-fazer.webp#g' \
             -e 's#assets/images/frota/kl-van-frente.png#assets/images/frota/kl-van-frente.webp#g' \
+            -e 's#assets/images/frota/motos/kl-motoboy-express.png#assets/images/frota/motos/kl-motoboy-express.webp#g' \
+            -e 's#assets/images/frota/picapes/kl-picapes-utilitarios-operacao.png#assets/images/frota/picapes/kl-picapes-utilitarios-operacao.webp#g' \
+            -e 's#assets/images/frota/caminhoes/kl-caminhao-carga-andaimes.png#assets/images/frota/caminhoes/kl-caminhao-carga-andaimes.webp#g' \
+            -e 's#assets/images/frota/caminhoes/kl-caminhao-estrutura-metalica-noturna.png#assets/images/frota/caminhoes/kl-caminhao-estrutura-metalica-noturna.webp#g' \
+            -e 's#assets/images/frota/caminhoes/kl-caminhao-carga-lona-noturna.png#assets/images/frota/caminhoes/kl-caminhao-carga-lona-noturna.webp#g' \
+            -e 's#assets/images/frota/caminhoes/kl-caminhao-galpao-industrial.png#assets/images/frota/caminhoes/kl-caminhao-galpao-industrial.webp#g' \
+            -e 's#assets/images/frota/caminhoes/kl-caminhao-container.png#assets/images/frota/caminhoes/kl-caminhao-container.webp#g' \
+            -e 's#assets/images/frota/motos/kl-frota-motos-operacao.png#assets/images/frota/motos/kl-frota-motos-operacao.webp#g' \
+            -e 's#assets/images/frota/kl-van-traseira.png#assets/images/frota/kl-van-traseira.webp#g' \
+            -e 's#assets/images/frota/caminhoes/kl-caminhao-carregamento-concluido.png#assets/images/frota/caminhoes/kl-caminhao-carregamento-concluido.webp#g' \
             index.html
 
       - name: Commit optimized assets and references
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            index.html \
-            assets/images/branding/kl-transporte-express-logo.webp \
-            assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp \
-            assets/images/frota/motos/kl-moto-frete-fazer.webp \
-            assets/images/frota/kl-van-frente.webp
+          git add index.html assets/images/**/*.webp assets/images/**/**/*.webp assets/images/**/**/**/*.webp
           if git diff --cached --quiet; then
             echo "No optimized assets or references changed."
             exit 0
           fi
-          git commit -m "perf: use optimized WebP critical assets"
+          git commit -m "perf: use WebP assets across V2"
           git push origin HEAD:site-v1
