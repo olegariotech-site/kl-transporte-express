@@ -10,6 +10,8 @@ Criar uma landing page simples, rápida e orientada à conversão para WhatsApp.
 - WhatsApp: +55 19 98104-5820
 - E-mail: kltransporteexpress@gmail.com
 - Horários: seg–sex 08h–18h; sáb 08h–12h; domingo fechado
+- Logo principal aprovado no projeto: `assets/images/branding/kl-transporte-express-logo.png`
+- Direção visual: azul, branco e amarelo, com elementos de velocidade, moto e transporte de cargas
 
 ## Serviços confirmados em canais atuais
 - Moto Frete
@@ -45,7 +47,6 @@ Posicionar a K.L acima de “apenas motoboy”, apresentando capacidade para dif
 - Clientes empresariais que podem ser exibidos
 - Depoimentos reais
 - Rotas e serviços que devem receber maior prioridade comercial
-- Versão refinada do logotipo
 
 ## Regra editorial
 Não inventar números, certificações, clientes, frota própria ou abrangência não confirmada. Priorizar fotos reais e provas operacionais da K.L.
