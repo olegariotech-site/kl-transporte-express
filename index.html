@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="K.L Transporte Express — moto frete, utilitários, vans, caminhões e carretas em Campinas e região. Solicite sua cotação pelo WhatsApp." />
+  <meta name="description" content="K.L Transporte Express — moto frete, Fiorino, furgão, caminhões e carretas em Campinas, região, interior de SP e outras rotas sob consulta. Solicite sua cotação pelo WhatsApp." />
   <meta name="theme-color" content="#06111f" />
   <link rel="canonical" href="https://olegariotech-site.github.io/kl-transporte-express/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
-  <meta property="og:title" content="K.L Transporte Express | Fretes e transportes em Campinas-SP" />
-  <meta property="og:description" content="Moto frete, utilitários, vans, caminhões e carretas em Campinas e região. Solicite sua cotação pelo WhatsApp." />
+  <meta property="og:title" content="K.L Transporte Express | Moto Frete, Fiorino e Fretes em Campinas-SP" />
+  <meta property="og:description" content="Moto frete, Fiorino, furgão, caminhões e carretas em Campinas, região, interior de SP e outras rotas sob consulta. Solicite sua cotação pelo WhatsApp." />
   <meta property="og:url" content="https://olegariotech-site.github.io/kl-transporte-express/" />
-  <meta property="og:image" content="https://olegariotech-site.github.io/kl-transporte-express/assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp" />
+  <meta property="og:image" content="https://olegariotech-site.github.io/kl-transporte-express/assets/images/frota/picapes/kl-fiorino-utilitario-principal.webp" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <title>K.L Transporte Express | Fretes e transportes em Campinas-SP</title>
+  <title>K.L Transporte Express | Moto Frete, Fiorino e Fretes em Campinas-SP</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +27,22 @@
     .reveal{opacity:1!important;transform:none!important}
     html.js-motion .reveal{opacity:0!important;transform:translateY(24px)!important}
     html.js-motion .reveal.is-visible{opacity:1!important;transform:none!important}
+
+    /* Atalhos comerciais: principais soluções visíveis sem depender das abas. */
+    .quick-services{padding-top:clamp(42px,6vw,78px);padding-bottom:clamp(42px,6vw,72px)}
+    .quick-service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
+    .quick-service-card{display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:var(--surface);color:inherit;text-decoration:none;box-shadow:0 18px 48px rgba(0,0,0,.16);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+    .quick-service-card:hover,.quick-service-card:focus-visible{transform:translateY(-4px);border-color:rgba(255,184,0,.65);box-shadow:0 22px 56px rgba(0,0,0,.26)}
+    .quick-service-card.is-priority{border-color:rgba(255,184,0,.38)}
+    .quick-service-media{height:190px;background:#071421;overflow:hidden}
+    .quick-service-media img{width:100%;height:100%;object-fit:cover;display:block}
+    .quick-service-body{display:flex;flex-direction:column;gap:8px;flex:1;padding:18px}
+    .quick-service-body small{color:var(--accent);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .quick-service-body strong{font-family:Manrope,Inter,sans-serif;font-size:1.2rem;line-height:1.12;color:var(--text)}
+    .quick-service-body p{margin:0;color:var(--muted);font-size:.91rem;line-height:1.5}
+    .quick-service-cta{margin-top:auto;padding-top:8px;color:var(--accent);font-weight:800;font-size:.88rem}
+    @media(max-width:980px){.quick-service-grid{grid-template-columns:1fr 1fr}.quick-service-media{height:210px}}
+    @media(max-width:560px){.quick-service-grid{grid-template-columns:1fr}.quick-service-media{height:220px}}
   </style>
 
   <script type="application/ld+json">
@@ -43,7 +59,7 @@
       "addressRegion": "SP",
       "addressCountry": "BR"
     },
-    "areaServed": "Campinas e região",
+    "areaServed": ["Campinas", "Região Metropolitana de Campinas", "Interior de São Paulo", "Outras rotas sob consulta"],
     "sameAs": [
       "https://www.instagram.com/transporte_campinas/"
     ]
@@ -76,8 +92,8 @@
   <main>
     <section class="hero" id="inicio">
       <div class="hero-copy reveal">
-        <h1>Da urgência à carga pesada. <span>A K.L resolve.</span></h1>
-        <p>Moto frete, utilitários, vans, caminhões e carretas para transporte em Campinas, região e rotas sob consulta.</p>
+        <h1>Moto Frete e Fiorino para resolver rápido. <span>A K.L resolve.</span></h1>
+        <p>Moto frete, Fiorino, furgão, caminhões e carretas para Campinas, região, interior de São Paulo e outras rotas sob consulta.</p>
 
         <div class="hero-actions">
           <a class="button button-arrow" href="https://wa.me/5519981045820?text=Ol%C3%A1%2C%20K.L%20Transporte%20Express.%20Gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o." target="_blank" rel="noopener">Cotar agora no WhatsApp <span aria-hidden="true">→</span></a>
@@ -87,15 +103,16 @@
         <div class="hero-meta" aria-label="Área de atendimento">
           <span>Campinas</span>
           <span>Região</span>
-          <span>Rotas sob consulta</span>
+          <span>Interior de SP</span>
+          <span>Outras rotas sob consulta</span>
         </div>
       </div>
 
       <div class="hero-stage reveal" data-parallax-stage aria-label="Operação da K.L Transporte Express">
         <div class="hero-glow" aria-hidden="true"></div>
         <figure class="hero-main-card" data-parallax="0.5">
-          <img src="assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp" alt="Caminhão da K.L Transporte Express" fetchpriority="high" decoding="async" />
-          <figcaption>Grandes cargas</figcaption>
+          <img src="assets/images/frota/picapes/kl-fiorino-utilitario-principal.webp" alt="Fiorino da K.L Transporte Express" fetchpriority="high" decoding="async" />
+          <figcaption>Fiorino</figcaption>
         </figure>
         <figure class="hero-mini-card hero-mini-moto" data-parallax="0.85">
           <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/images/frota/motos/kl-moto-frete-fazer.webp" data-defer-image alt="Moto da K.L Transporte Express" decoding="async" />
@@ -103,17 +120,44 @@
         </figure>
         <figure class="hero-mini-card hero-mini-van" data-parallax="0.7">
           <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/images/frota/kl-van-frente.webp" data-defer-image alt="Van da K.L Transporte Express" decoding="async" />
-          <figcaption>Utilitários</figcaption>
+          <figcaption>Furgão</figcaption>
         </figure>
       </div>
     </section>
 
     <div class="motion-strip" aria-hidden="true">
       <div class="motion-track">
-        <span>MOTO FRETE</span><b>•</b><span>UTILITÁRIOS</span><b>•</b><span>VAN / FURGÃO</span><b>•</b><span>CAMINHÃO</span><b>•</b><span>CARRETA</span><b>•</b>
-        <span>MOTO FRETE</span><b>•</b><span>UTILITÁRIOS</span><b>•</b><span>VAN / FURGÃO</span><b>•</b><span>CAMINHÃO</span><b>•</b><span>CARRETA</span><b>•</b>
+        <span>MOTO FRETE</span><b>•</b><span>FIORINO</span><b>•</b><span>FURGÃO</span><b>•</b><span>CAMINHÃO</span><b>•</b><span>CARRETA</span><b>•</b>
+        <span>MOTO FRETE</span><b>•</b><span>FIORINO</span><b>•</b><span>FURGÃO</span><b>•</b><span>CAMINHÃO</span><b>•</b><span>CARRETA</span><b>•</b>
       </div>
     </div>
+
+
+    <section class="section quick-services" id="servicos-diretos">
+      <div class="section-heading reveal">
+        <h2>O que você precisa transportar hoje?</h2>
+        <p>As principais opções da K.L já estão aqui. Escolha o veículo e siga direto para organizar sua cotação.</p>
+      </div>
+
+      <div class="quick-service-grid reveal">
+        <a class="quick-service-card is-priority" href="#cotacao" data-service="Moto Frete" aria-label="Organizar cotação de Moto Frete">
+          <div class="quick-service-media"><img src="assets/images/frota/motos/kl-motoboy-express.webp" alt="Moto frete da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-body"><small>Agilidade</small><strong>Moto Frete</strong><p>Documentos, peças, pequenos volumes e entregas urgentes.</p><span class="quick-service-cta">Pedir Moto Frete →</span></div>
+        </a>
+        <a class="quick-service-card is-priority" href="#cotacao" data-service="Pickup / Fiorino" aria-label="Organizar cotação de Fiorino">
+          <div class="quick-service-media"><img src="assets/images/frota/picapes/kl-fiorino-capacidade-carga.webp" alt="Capacidade de carga da Fiorino" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-body"><small>Carga leve e média</small><strong>Fiorino / Utilitário</strong><p>Mercadorias, caixas, peças e operações comerciais com praticidade.</p><span class="quick-service-cta">Cotar Fiorino →</span></div>
+        </a>
+        <a class="quick-service-card" href="#cotacao" data-service="Van / Furgão" aria-label="Organizar cotação de Van ou Furgão">
+          <div class="quick-service-media"><img src="assets/images/frota/kl-van-frente.webp" alt="Furgão da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-body"><small>Mais espaço</small><strong>Van / Furgão</strong><p>Carga fechada e protegida para volumes e operações dedicadas.</p><span class="quick-service-cta">Cotar Furgão →</span></div>
+        </a>
+        <a class="quick-service-card" href="#cotacao" data-service="Caminhão / Carreta" aria-label="Organizar cotação de Caminhão ou Carreta">
+          <div class="quick-service-media"><img src="assets/images/frota/caminhoes/kl-caminhao-carga-andaimes.webp" alt="Caminhão da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-body"><small>Carga pesada</small><strong>Caminhão / Carreta</strong><p>Estrutura para operações industriais e transportes de maior porte.</p><span class="quick-service-cta">Consultar transporte →</span></div>
+        </a>
+      </div>
+    </section>
 
     <section class="section route-section" id="como-funciona">
       <div class="section-heading reveal">
@@ -137,14 +181,14 @@
 
     <section class="section vehicle-section" id="servicos">
       <div class="section-heading reveal">
-        <h2>Escolha pela necessidade. A gente cuida do resto.</h2>
-        <p>Toque ou clique no tipo de operação para entender qual veículo atende melhor o seu transporte.</p>
+        <h2>Quer comparar cada opção com mais detalhe?</h2>
+        <p>Explore os veículos e veja qual solução combina melhor com a sua coleta ou entrega.</p>
       </div>
 
       <div class="vehicle-selector reveal" data-vehicle-selector>
         <div class="vehicle-tabs" role="tablist" aria-label="Tipos de transporte">
           <button class="vehicle-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="vehicle-moto" id="tab-moto" data-target="vehicle-moto">Moto frete</button>
-          <button class="vehicle-tab" type="button" role="tab" aria-selected="false" aria-controls="vehicle-utilitario" id="tab-utilitario" data-target="vehicle-utilitario">Utilitários</button>
+          <button class="vehicle-tab" type="button" role="tab" aria-selected="false" aria-controls="vehicle-utilitario" id="tab-utilitario" data-target="vehicle-utilitario">Fiorino / Utilitário</button>
           <button class="vehicle-tab" type="button" role="tab" aria-selected="false" aria-controls="vehicle-van" id="tab-van" data-target="vehicle-van">Van / Furgão</button>
           <button class="vehicle-tab" type="button" role="tab" aria-selected="false" aria-controls="vehicle-caminhao" id="tab-caminhao" data-target="vehicle-caminhao">Caminhão / Carreta</button>
         </div>
@@ -164,12 +208,12 @@
           <article class="vehicle-panel" id="vehicle-utilitario" role="tabpanel" aria-labelledby="tab-utilitario" hidden>
             <div class="vehicle-copy">
               <span class="vehicle-index">02</span>
-              <h3>Utilitários e picapes</h3>
-              <p>Opções abertas e fechadas para mercadorias, equipamentos e volumes que pedem flexibilidade.</p>
-              <ul><li>Picapes abertas e fechadas</li><li>Fiorino e pequenos utilitários</li><li>Cargas leves e médias</li></ul>
-              <a class="text-cta" href="#cotacao" data-service="Pickup / Fiorino">Organizar cotação de utilitário <span>→</span></a>
+              <h3>Fiorino / Utilitários</h3>
+              <p>Uma das soluções mais usadas da K.L para mercadorias, peças, caixas e cargas leves ou médias.</p>
+              <ul><li>Boa capacidade com operação ágil</li><li>Mercadorias, peças e caixas</li><li>Campinas, região e viagens sob consulta</li></ul>
+              <a class="text-cta" href="#cotacao" data-service="Pickup / Fiorino">Organizar cotação de Fiorino <span>→</span></a>
             </div>
-            <figure><img src="assets/images/frota/picapes/kl-picapes-utilitarios-operacao.webp" alt="Picapes e utilitários da K.L Transporte Express" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/images/frota/picapes/kl-fiorino-capacidade-carga.webp" alt="Compartimento de carga de Fiorino para coletas e entregas" loading="lazy" decoding="async" /></figure>
           </article>
 
           <article class="vehicle-panel" id="vehicle-van" role="tabpanel" aria-labelledby="tab-van" hidden>
