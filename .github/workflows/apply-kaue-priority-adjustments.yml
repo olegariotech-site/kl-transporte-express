@@ -1,0 +1,170 @@
+name: Apply Kaue priority adjustments
+
+on:
+  push:
+    branches:
+      - site-v1
+    paths:
+      - .github/workflows/apply-kaue-priority-adjustments.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: site-v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Sharp
+        run: npm install --no-save sharp@0.33.5
+
+      - name: Optimize Fiorino images
+        run: |
+          node <<'NODE'
+          const sharp = require('sharp');
+          const fs = require('fs');
+          const assets = [
+            ['assets/images/frota/picapes/kl-fiorino-utilitario-principal.png', 'assets/images/frota/picapes/kl-fiorino-utilitario-principal.webp', 1280, 82],
+            ['assets/images/frota/picapes/kl-fiorino-capacidade-carga.png', 'assets/images/frota/picapes/kl-fiorino-capacidade-carga.webp', 1100, 84]
+          ];
+          Promise.all(assets.map(async ([input, output, width, quality]) => {
+            if (!fs.existsSync(input)) throw new Error(`Missing source: ${input}`);
+            await sharp(input).rotate().resize({ width, withoutEnlargement: true }).webp({ quality, effort: 6 }).toFile(output);
+            console.log(`${output}: ${(fs.statSync(output).size / 1024).toFixed(1)} KB`);
+          })).catch((error) => { console.error(error); process.exit(1); });
+          NODE
+
+      - name: Apply commercial hierarchy updates
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          replacements = {
+            'K.L Transporte Express — moto frete, utilitários, vans, caminhões e carretas em Campinas e região. Solicite sua cotação pelo WhatsApp.':
+            'K.L Transporte Express — moto frete, Fiorino, furgão, caminhões e carretas em Campinas, região, interior de SP e outras rotas sob consulta. Solicite sua cotação pelo WhatsApp.',
+            'K.L Transporte Express | Fretes e transportes em Campinas-SP':
+            'K.L Transporte Express | Moto Frete, Fiorino e Fretes em Campinas-SP',
+            'Moto frete, utilitários, vans, caminhões e carretas em Campinas e região. Solicite sua cotação pelo WhatsApp.':
+            'Moto frete, Fiorino, furgão, caminhões e carretas em Campinas, região, interior de SP e outras rotas sob consulta. Solicite sua cotação pelo WhatsApp.',
+            'https://olegariotech-site.github.io/kl-transporte-express/assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp':
+            'https://olegariotech-site.github.io/kl-transporte-express/assets/images/frota/picapes/kl-fiorino-utilitario-principal.webp',
+            '"areaServed": "Campinas e região",':
+            '"areaServed": ["Campinas", "Região Metropolitana de Campinas", "Interior de São Paulo", "Outras rotas sob consulta"],',
+            '<h1>Da urgência à carga pesada. <span>A K.L resolve.</span></h1>':
+            '<h1>Moto Frete e Fiorino para resolver rápido. <span>A K.L resolve.</span></h1>',
+            '<p>Moto frete, utilitários, vans, caminhões e carretas para transporte em Campinas, região e rotas sob consulta.</p>':
+            '<p>Moto frete, Fiorino, furgão, caminhões e carretas para Campinas, região, interior de São Paulo e outras rotas sob consulta.</p>',
+            '<span>Rotas sob consulta</span>':
+            '<span>Interior de SP</span>\n          <span>Outras rotas sob consulta</span>',
+            '<img src="assets/images/frota/caminhoes/kl-caminhao-estrada-arvores.webp" alt="Caminhão da K.L Transporte Express" fetchpriority="high" decoding="async" />\n          <figcaption>Grandes cargas</figcaption>':
+            '<img src="assets/images/frota/picapes/kl-fiorino-utilitario-principal.webp" alt="Fiorino da K.L Transporte Express" fetchpriority="high" decoding="async" />\n          <figcaption>Fiorino</figcaption>',
+            '<figcaption>Utilitários</figcaption>':
+            '<figcaption>Furgão</figcaption>',
+            '<span>MOTO FRETE</span><b>•</b><span>UTILITÁRIOS</span><b>•</b><span>VAN / FURGÃO</span><b>•</b><span>CAMINHÃO</span><b>•</b><span>CARRETA</span><b>•</b>':
+            '<span>MOTO FRETE</span><b>•</b><span>FIORINO</span><b>•</b><span>FURGÃO</span><b>•</b><span>CAMINHÃO</span><b>•</b><span>CARRETA</span><b>•</b>',
+            '<h2>Escolha pela necessidade. A gente cuida do resto.</h2>\n        <p>Toque ou clique no tipo de operação para entender qual veículo atende melhor o seu transporte.</p>':
+            '<h2>Quer comparar cada opção com mais detalhe?</h2>\n        <p>Explore os veículos e veja qual solução combina melhor com a sua coleta ou entrega.</p>',
+            '>Utilitários</button>':
+            '>Fiorino / Utilitário</button>',
+            '<h3>Utilitários e picapes</h3>\n              <p>Opções abertas e fechadas para mercadorias, equipamentos e volumes que pedem flexibilidade.</p>\n              <ul><li>Picapes abertas e fechadas</li><li>Fiorino e pequenos utilitários</li><li>Cargas leves e médias</li></ul>\n              <a class="text-cta" href="#cotacao" data-service="Pickup / Fiorino">Organizar cotação de utilitário <span>→</span></a>':
+            '<h3>Fiorino / Utilitários</h3>\n              <p>Uma das soluções mais usadas da K.L para mercadorias, peças, caixas e cargas leves ou médias.</p>\n              <ul><li>Boa capacidade com operação ágil</li><li>Mercadorias, peças e caixas</li><li>Campinas, região e viagens sob consulta</li></ul>\n              <a class="text-cta" href="#cotacao" data-service="Pickup / Fiorino">Organizar cotação de Fiorino <span>→</span></a>',
+            '<figure><img src="assets/images/frota/picapes/kl-picapes-utilitarios-operacao.webp" alt="Picapes e utilitários da K.L Transporte Express" loading="lazy" decoding="async" /></figure>':
+            '<figure><img src="assets/images/frota/picapes/kl-fiorino-capacidade-carga.webp" alt="Compartimento de carga de Fiorino para coletas e entregas" loading="lazy" decoding="async" /></figure>'
+          }
+
+          for old, new in replacements.items():
+            if old not in text:
+              raise SystemExit(f'Replacement source not found: {old[:90]}')
+            text = text.replace(old, new)
+
+          if '.quick-service-grid' not in text:
+            css = '''
+    /* Atalhos comerciais: o cliente enxerga as principais soluções sem precisar explorar abas. */
+    .quick-services{padding-top:clamp(42px,6vw,78px);padding-bottom:clamp(42px,6vw,72px)}
+    .quick-service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
+    .quick-service-card{display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:var(--surface);color:inherit;text-decoration:none;box-shadow:0 18px 48px rgba(0,0,0,.16);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+    .quick-service-card:hover,.quick-service-card:focus-visible{transform:translateY(-4px);border-color:rgba(255,184,0,.65);box-shadow:0 22px 56px rgba(0,0,0,.26)}
+    .quick-service-card.is-priority{border-color:rgba(255,184,0,.38)}
+    .quick-service-media{height:190px;background:#071421;overflow:hidden}
+    .quick-service-media img{width:100%;height:100%;object-fit:cover;display:block}
+    .quick-service-body{display:flex;flex-direction:column;gap:8px;flex:1;padding:18px}
+    .quick-service-body small{color:var(--accent);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .quick-service-body strong{font-family:Manrope,Inter,sans-serif;font-size:1.2rem;line-height:1.12;color:var(--text)}
+    .quick-service-body p{margin:0;color:var(--muted);font-size:.91rem;line-height:1.5}
+    .quick-service-cta{margin-top:auto;padding-top:8px;color:var(--accent);font-weight:800;font-size:.88rem}
+    @media(max-width:980px){.quick-service-grid{grid-template-columns:1fr 1fr}.quick-service-media{height:210px}}
+    @media(max-width:560px){.quick-service-grid{grid-template-columns:1fr}.quick-service-media{height:220px}}
+'''
+            marker = '  </style>'
+            if marker not in text:
+              raise SystemExit('Style closing marker not found')
+            text = text.replace(marker, css + marker, 1)
+
+          if 'id="servicos-diretos"' not in text:
+            quick = '''
+    <section class="section quick-services" id="servicos-diretos">
+      <div class="section-heading reveal">
+        <h2>O que você precisa transportar hoje?</h2>
+        <p>As principais opções da K.L já estão aqui. Escolha o veículo e siga direto para organizar sua cotação.</p>
+      </div>
+
+      <div class="quick-service-grid reveal">
+        <a class="quick-service-card is-priority" href="#cotacao" data-service="Moto Frete" aria-label="Organizar cotação de Moto Frete">
+          <div class="quick-service-media"><img src="assets/images/frota/motos/kl-motoboy-express.webp" alt="Moto frete da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-body"><small>Agilidade</small><strong>Moto Frete</strong><p>Documentos, peças, pequenos volumes e entregas urgentes.</p><span class="quick-service-cta">Pedir Moto Frete →</span></div>
+        </a>
+        <a class="quick-service-card is-priority" href="#cotacao" data-service="Pickup / Fiorino" aria-label="Organizar cotação de Fiorino">
+          <div class="quick-service-media"><img src="assets/images/frota/picapes/kl-fiorino-capacidade-carga.webp" alt="Capacidade de carga da Fiorino" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-body"><small>Carga leve e média</small><strong>Fiorino / Utilitário</strong><p>Mercadorias, caixas, peças e operações comerciais com praticidade.</p><span class="quick-service-cta">Cotar Fiorino →</span></div>
+        </a>
+        <a class="quick-service-card" href="#cotacao" data-service="Van / Furgão" aria-label="Organizar cotação de Van ou Furgão">
+          <div class="quick-service-media"><img src="assets/images/frota/kl-van-frente.webp" alt="Furgão da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-body"><small>Mais espaço</small><strong>Van / Furgão</strong><p>Carga fechada e protegida para volumes e operações dedicadas.</p><span class="quick-service-cta">Cotar Furgão →</span></div>
+        </a>
+        <a class="quick-service-card" href="#cotacao" data-service="Caminhão / Carreta" aria-label="Organizar cotação de Caminhão ou Carreta">
+          <div class="quick-service-media"><img src="assets/images/frota/caminhoes/kl-caminhao-carga-andaimes.webp" alt="Caminhão da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-body"><small>Carga pesada</small><strong>Caminhão / Carreta</strong><p>Estrutura para operações industriais e transportes de maior porte.</p><span class="quick-service-cta">Consultar transporte →</span></div>
+        </a>
+      </div>
+    </section>
+
+'''
+            marker = '    <section class="section route-section" id="como-funciona">'
+            if marker not in text:
+              raise SystemExit('Route section marker not found')
+            text = text.replace(marker, quick + marker, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate priority changes
+        run: |
+          grep -q "Moto Frete e Fiorino para resolver rápido" index.html
+          grep -q "kl-fiorino-utilitario-principal.webp" index.html
+          grep -q "kl-fiorino-capacidade-carga.webp" index.html
+          grep -q 'id="servicos-diretos"' index.html
+          grep -q "Fiorino / Utilitário" index.html
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/images/frota/picapes/kl-fiorino-utilitario-principal.webp assets/images/frota/picapes/kl-fiorino-capacidade-carga.webp
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "feat: prioriza Moto Frete, Fiorino e Furgão na home"
+          git push origin HEAD:site-v1
