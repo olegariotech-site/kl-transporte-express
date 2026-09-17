@@ -23,28 +23,29 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
           path = Path('index.html')
           text = path.read_text(encoding='utf-8')
 
-          old_schema = '''    "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Campinas",
-              "addressRegion": "SP",
-              "addressCountry": "BR"
-            },'''
-          new_schema = '''    "address": {
+          pattern = re.compile(
+              r'"address"\s*:\s*\{\s*"@type"\s*:\s*"PostalAddress",\s*'
+              r'"addressLocality"\s*:\s*"Campinas",\s*'
+              r'"addressRegion"\s*:\s*"SP",\s*'
+              r'"addressCountry"\s*:\s*"BR"\s*\}',
+              re.S,
+          )
+          replacement = '''"address": {
               "@type": "PostalAddress",
               "streetAddress": "R. Dr. Gastão da Rocha Leão, 683",
               "addressLocality": "Campinas",
               "addressRegion": "SP",
               "postalCode": "13050-400",
               "addressCountry": "BR"
-            },'''
-
-          if old_schema not in text:
-              raise SystemExit('Bloco de endereço estruturado esperado não foi encontrado')
-          text = text.replace(old_schema, new_schema, 1)
+            }'''
+          text, count = pattern.subn(replacement, text, count=1)
+          if count != 1:
+              raise SystemExit(f'Bloco de endereço estruturado não localizado ou ambíguo: {count}')
 
           old_footer = '<span>Bonfim · Campinas-SP</span>'
           new_footer = '<span>R. Dr. Gastão da Rocha Leão, 683 · Cidade Jardim · Campinas-SP · CEP 13050-400</span>'
