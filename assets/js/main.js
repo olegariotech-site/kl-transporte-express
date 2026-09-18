@@ -12,6 +12,7 @@
         menuButton.setAttribute('aria-label', open ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
         navigation.classList.toggle('is-open', open);
         if (restoreFocus) menuButton.focus();
+        scheduleFloatingLinks();
       };
       menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
       navigation.addEventListener('click', (event) => {
@@ -214,4 +215,3 @@
     console.error('K.L UI fallback ativado:', error);
   }
 })();
-
