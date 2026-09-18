@@ -21,45 +21,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260918-hero4" />
+  <script>document.documentElement.classList.add('js-motion', 'js-nav');</script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260918-final1" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/identidade-oficial/14_kl_favicon_32.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="assets/images/branding/identidade-oficial/13_kl_favicon_512.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/branding/identidade-oficial/15_kl_apple_touch_icon_180.png" />
 
-  <style>
-    /* Conteúdo visível por padrão. O motion só entra quando o JavaScript está ativo. */
-    .reveal{opacity:1!important;transform:none!important}
-    html.js-motion .reveal{opacity:0!important;transform:translateY(24px)!important}
-    html.js-motion .reveal.is-visible{opacity:1!important;transform:none!important}
 
-    /* Atalhos comerciais: principais soluções visíveis sem depender das abas. */
-    .quick-services{padding-top:clamp(42px,6vw,78px);padding-bottom:clamp(42px,6vw,72px)}
-    .quick-service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
-    .quick-service-card{display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:var(--surface);color:inherit;text-decoration:none;box-shadow:0 18px 48px rgba(0,0,0,.16);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
-    .quick-service-card:hover,.quick-service-card:focus-visible{transform:translateY(-4px);border-color:rgba(255,184,0,.65);box-shadow:0 22px 56px rgba(0,0,0,.26)}
-    .quick-service-card.is-priority{border-color:rgba(255,184,0,.38)}
-    .quick-service-media{height:190px;background:#071421;overflow:hidden}
-    .quick-service-media img{width:100%;height:100%;object-fit:cover;display:block}
-    .quick-service-body{display:flex;flex-direction:column;gap:8px;flex:1;padding:18px}
-    .quick-service-body small{color:var(--accent);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-    .quick-service-body strong{font-family:Manrope,Inter,sans-serif;font-size:1.2rem;line-height:1.12;color:var(--text)}
-    .quick-service-body p{margin:0;color:var(--muted);font-size:.91rem;line-height:1.5}
-    .quick-service-cta{margin-top:auto;padding-top:8px;color:var(--accent);font-weight:800;font-size:.88rem}
-    @media(max-width:980px){.quick-service-grid{grid-template-columns:1fr 1fr}.quick-service-media{height:210px}}
-    @media(max-width:560px){.quick-service-grid{grid-template-columns:1fr}.quick-service-media{height:220px}}
-  </style>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "K.L Transporte Express",
-    "url": "https://olegariotech-site.github.io/kl-transporte-express/",
-    "telephone": "+55 19 98104-5820",
-    "email": "kltransporteexpress@gmail.com",
-    "logo": "https://olegariotech-site.github.io/kl-transporte-express/assets/images/branding/identidade-oficial/07_kl_avatar_oficial_fundo_azul.png",
-    "image": "https://olegariotech-site.github.io/kl-transporte-express/assets/images/branding/identidade-oficial/01_kl_logo_principal_fundo_azul.png",
-    "address": {
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "K.L Transporte Express",
+  "url": "https://olegariotech-site.github.io/kl-transporte-express/",
+  "telephone": "+55 19 98104-5820",
+  "email": "kltransporteexpress@gmail.com",
+  "logo": "https://olegariotech-site.github.io/kl-transporte-express/assets/images/branding/identidade-oficial/07_kl_avatar_oficial_fundo_azul.png",
+  "image": "https://olegariotech-site.github.io/kl-transporte-express/assets/images/branding/identidade-oficial/01_kl_logo_principal_fundo_azul.png",
+  "address": {
     "@type": "PostalAddress",
     "streetAddress": "R. Dr. Gastão da Rocha Leão, 683",
     "addressLocality": "Campinas",
@@ -67,22 +47,56 @@
     "postalCode": "13050-400",
     "addressCountry": "BR"
   },
-    "areaServed": ["Campinas", "Região Metropolitana de Campinas", "Interior de São Paulo", "Outras rotas sob consulta"],
-    "sameAs": [
-      "https://www.instagram.com/transporte_campinas/"
-    ]
-  }
+  "areaServed": [
+    "Campinas",
+    "Região Metropolitana de Campinas",
+    "Interior de São Paulo",
+    "Outras rotas sob consulta"
+  ],
+  "sameAs": [
+    "https://www.instagram.com/transporte_campinas/"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "12:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "00:00",
+      "closes": "00:00"
+    }
+  ]
+}
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header" data-header>
     <a class="brand" href="#inicio" aria-label="K.L Transporte Express - início">
       <span class="brand-mark">
-        <img class="brand-logo" src="assets/images/branding/identidade-oficial/06_kl_logo_horizontal_transparente.png" alt="K.L Transporte Express" decoding="async" />
+        <img class="brand-logo" src="assets/images/branding/identidade-oficial/06_kl_logo_horizontal_web.png" alt="K.L Transporte Express" decoding="async" width="800" height="152" />
       </span>
     </a>
 
-    <nav class="nav" aria-label="Navegação principal">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu de navegação"><span aria-hidden="true">☰</span><span class="sr-only">Menu</span></button>
+
+    <nav class="nav" id="main-nav" aria-label="Navegação principal">
       <a href="#servicos">Serviços</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#frota">Frota</a>
@@ -93,7 +107,7 @@
     <a class="button button-small header-cta" href="#cotacao">Pedir orçamento</a>
   </header>
 
-  <main>
+  <main id="conteudo" tabindex="-1">
     <section class="hero" id="inicio">
       <div class="hero-copy reveal">
         <h1>Motoboy, utilitários ou caminhão para resolver rápido? A <span>K.L</span> tem a solução para você.</h1>
@@ -115,19 +129,19 @@
       <div class="hero-stage reveal" data-parallax-stage aria-label="Operação da K.L Transporte Express">
         <div class="hero-glow" aria-hidden="true"></div>
         <figure class="hero-main-card" data-parallax="0.5">
-          <img src="assets/images/frota/identidade-oficial/02_kl_caminhao_estrada_logo_oficial.png?v=20260918-hero3" alt="Caminhão / Carreta da K.L Transporte Express" fetchpriority="high" decoding="async" />
+          <picture><source srcset="assets/images/frota/identidade-oficial/02_kl_caminhao_estrada_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/02_kl_caminhao_estrada_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/02_kl_caminhao_estrada_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(70vw - 28px), (max-width:808px) calc(70vw - 34px), (max-width:980px) 532px, 407px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/02_kl_caminhao_estrada_logo_oficial.png" alt="Caminhão / Carreta da K.L Transporte Express" fetchpriority="high" decoding="async" width="1448" height="1086" /></picture>
           <figcaption>Caminhão / Carreta</figcaption>
         </figure>
         <figure class="hero-mini-card hero-mini-moto" data-parallax="0.85">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/images/frota/identidade-oficial/05_kl_motociclista_entardecer_logo_oficial.png?v=20260918-hero3" data-defer-image alt="Motoboy da K.L Transporte Express" decoding="async" />
+          <picture><source srcset="assets/images/frota/identidade-oficial/05_kl_motociclista_entardecer_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/05_kl_motociclista_entardecer_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/05_kl_motociclista_entardecer_logo_oficial.webp 1024w" sizes="(max-width:700px) calc(30vw - 18px), (max-width:980px) 213px, 163px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/05_kl_motociclista_entardecer_logo_oficial.png" alt="Motoboy da K.L Transporte Express" decoding="async" width="1122" height="1402" /></picture>
           <figcaption>Motoboy</figcaption>
         </figure>
         <figure class="hero-mini-card hero-mini-van" data-parallax="0.7">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial.png?v=20260918-hero3" data-defer-image alt="Utilitário da K.L Transporte Express" decoding="async" />
+          <picture><source srcset="assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(50vw - 23px), (max-width:980px) 251px, 192px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial.png" alt="Utilitário da K.L Transporte Express" decoding="async" width="1448" height="1086" /></picture>
           <figcaption>Utilitários</figcaption>
         </figure>
         <figure class="hero-mini-card hero-mini-fiorino" data-parallax="0.62">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/images/frota/identidade-oficial/06_kl_van_diante_armazem_logo_oficial.png?v=20260918-hero3" data-defer-image alt="Fiorino da K.L Transporte Express" decoding="async" />
+          <picture><source srcset="assets/images/frota/identidade-oficial/06_kl_van_diante_armazem_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/06_kl_van_diante_armazem_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/06_kl_van_diante_armazem_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(50vw - 23px), (max-width:980px) 251px, 192px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/06_kl_van_diante_armazem_logo_oficial.png" alt="Fiorino da K.L Transporte Express" decoding="async" width="1448" height="1086" /></picture>
           <figcaption>Fiorino</figcaption>
         </figure>
       </div>
@@ -148,19 +162,19 @@
 
       <div class="quick-service-grid reveal">
         <a class="quick-service-card is-priority" href="#cotacao" data-service="Motoboy" aria-label="Organizar cotação de Motoboy">
-          <div class="quick-service-media"><img src="assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial.png" alt="Motoboy da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-media"><picture><source srcset="assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial.webp 1280w" sizes="(max-width:560px) calc(100vw - 36px), (max-width:980px) calc(50vw - 32px), 271px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial.png" alt="Motoboy da K.L Transporte Express" loading="lazy" decoding="async" width="1448" height="1086" /></picture></div>
           <div class="quick-service-body"><small>Agilidade</small><strong>Motoboy</strong><p>Documentos, peças, pequenos volumes e entregas urgentes.</p><span class="quick-service-cta">Pedir Motoboy →</span></div>
         </a>
         <a class="quick-service-card is-priority" href="#cotacao" data-service="Utilitários" aria-label="Organizar cotação de utilitário">
-          <div class="quick-service-media"><img src="assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial.png" alt="Capacidade de carga de utilitário da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-media"><picture><source srcset="assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial.webp 1280w" sizes="(max-width:560px) calc(100vw - 36px), (max-width:980px) calc(50vw - 32px), 271px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial.png" alt="Capacidade de carga de utilitário da K.L Transporte Express" loading="lazy" decoding="async" width="1448" height="1086" /></picture></div>
           <div class="quick-service-body"><small>Carga leve e média</small><strong>Utilitários</strong><p>Fiorino, picape, mercadorias, caixas, peças e operações comerciais com praticidade.</p><span class="quick-service-cta">Cotar utilitário →</span></div>
         </a>
         <a class="quick-service-card" href="#cotacao" data-service="Van / Furgão" aria-label="Organizar cotação de Van ou Furgão">
-          <div class="quick-service-media"><img src="assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial.png" alt="Furgão da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-media"><picture><source srcset="assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial.webp 1280w" sizes="(max-width:560px) calc(100vw - 36px), (max-width:980px) calc(50vw - 32px), 271px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial.png" alt="Furgão da K.L Transporte Express" loading="lazy" decoding="async" width="1448" height="1086" /></picture></div>
           <div class="quick-service-body"><small>Mais espaço</small><strong>Van / Furgão</strong><p>Carga fechada e protegida para volumes e operações dedicadas.</p><span class="quick-service-cta">Cotar Furgão →</span></div>
         </a>
         <a class="quick-service-card" href="#cotacao" data-service="Caminhão / Carreta" aria-label="Organizar cotação de Caminhão ou Carreta">
-          <div class="quick-service-media"><img src="assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial.png" alt="Caminhão da K.L Transporte Express" loading="lazy" decoding="async" /></div>
+          <div class="quick-service-media"><picture><source srcset="assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial.webp 1280w" sizes="(max-width:560px) calc(100vw - 36px), (max-width:980px) calc(50vw - 32px), 271px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial.png" alt="Caminhão da K.L Transporte Express" loading="lazy" decoding="async" width="1448" height="1086" /></picture></div>
           <div class="quick-service-body"><small>Carga pesada</small><strong>Caminhão / Carreta</strong><p>Estrutura para operações industriais e transportes de maior porte.</p><span class="quick-service-cta">Consultar transporte →</span></div>
         </a>
       </div>
@@ -195,9 +209,9 @@
       <div class="vehicle-selector reveal" data-vehicle-selector>
         <div class="vehicle-tabs" role="tablist" aria-label="Tipos de transporte">
           <button class="vehicle-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="vehicle-moto" id="tab-moto" data-target="vehicle-moto">Motoboy</button>
-          <button class="vehicle-tab" type="button" role="tab" aria-selected="false" aria-controls="vehicle-utilitario" id="tab-utilitario" data-target="vehicle-utilitario">Utilitários</button>
-          <button class="vehicle-tab" type="button" role="tab" aria-selected="false" aria-controls="vehicle-van" id="tab-van" data-target="vehicle-van">Van / Furgão</button>
-          <button class="vehicle-tab" type="button" role="tab" aria-selected="false" aria-controls="vehicle-caminhao" id="tab-caminhao" data-target="vehicle-caminhao">Caminhão / Carreta</button>
+          <button class="vehicle-tab" type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="vehicle-utilitario" id="tab-utilitario" data-target="vehicle-utilitario">Utilitários</button>
+          <button class="vehicle-tab" type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="vehicle-van" id="tab-van" data-target="vehicle-van">Van / Furgão</button>
+          <button class="vehicle-tab" type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="vehicle-caminhao" id="tab-caminhao" data-target="vehicle-caminhao">Caminhão / Carreta</button>
         </div>
 
         <div class="vehicle-panels">
@@ -209,7 +223,7 @@
               <ul><li>Documentos e malotes</li><li>Peças e pequenos volumes</li><li>Coletas e entregas urgentes</li></ul>
               <a class="text-cta" href="#cotacao" data-service="Motoboy">Organizar cotação de Motoboy <span>→</span></a>
             </div>
-            <figure><img src="assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial.png" alt="Motoboy da K.L Transporte Express" loading="lazy" decoding="async" /></figure>
+            <figure><picture><source srcset="assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/06_kl_motoboy_honda_logo_oficial.png" alt="Motoboy da K.L Transporte Express" loading="lazy" decoding="async" width="1448" height="1086" /></picture></figure>
           </article>
 
           <article class="vehicle-panel" id="vehicle-utilitario" role="tabpanel" aria-labelledby="tab-utilitario" hidden>
@@ -220,7 +234,7 @@
               <ul><li>Boa capacidade com operação ágil</li><li>Mercadorias, peças e caixas</li><li>Campinas, região e viagens sob consulta</li></ul>
               <a class="text-cta" href="#cotacao" data-service="Utilitários">Organizar cotação de utilitário <span>→</span></a>
             </div>
-            <figure><img src="assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial.png" alt="Compartimento de carga de utilitário para coletas e entregas" loading="lazy" decoding="async" /></figure>
+            <figure><picture><source srcset="assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/07_kl_utilitarios_card_logo_oficial.png" alt="Compartimento de carga de utilitário para coletas e entregas" loading="lazy" decoding="async" width="1448" height="1086" /></picture></figure>
           </article>
 
           <article class="vehicle-panel" id="vehicle-van" role="tabpanel" aria-labelledby="tab-van" hidden>
@@ -231,7 +245,7 @@
               <ul><li>Carga fechada e protegida</li><li>Operações comerciais</li><li>Transporte dedicado</li></ul>
               <a class="text-cta" href="#cotacao" data-service="Van / Furgão">Organizar cotação de Van / Furgão <span>→</span></a>
             </div>
-            <figure><img src="assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial.png" alt="Van da K.L Transporte Express" loading="lazy" decoding="async" /></figure>
+            <figure><picture><source srcset="assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/01_kl_van_renault_logo_oficial.png" alt="Van da K.L Transporte Express" loading="lazy" decoding="async" width="1448" height="1086" /></picture></figure>
           </article>
 
           <article class="vehicle-panel" id="vehicle-caminhao" role="tabpanel" aria-labelledby="tab-caminhao" hidden>
@@ -242,7 +256,7 @@
               <ul><li>Estruturas e andaimes</li><li>Cargas industriais</li><li>Operações dedicadas sob consulta</li></ul>
               <a class="text-cta" href="#cotacao" data-service="Caminhão / Carreta">Organizar cotação de carga pesada <span>→</span></a>
             </div>
-            <figure><img src="assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial.png" alt="Caminhão da K.L Transporte Express transportando carga" loading="lazy" decoding="async" /></figure>
+            <figure><picture><source srcset="assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/01_kl_caminhao_patio_andaimes_logo_oficial.png" alt="Caminhão da K.L Transporte Express transportando carga" loading="lazy" decoding="async" width="1448" height="1086" /></picture></figure>
           </article>
         </div>
       </div>
@@ -257,10 +271,10 @@
         </div>
 
         <div class="heavy-gallery reveal">
-          <figure class="heavy-feature"><img src="assets/images/frota/identidade-oficial/03_kl_caminhao_estrutura_noturna_logo_oficial.png" alt="Caminhão da K.L Transporte Express transportando estrutura metálica" loading="lazy" decoding="async" /><figcaption>Estruturas metálicas</figcaption></figure>
-          <figure><img src="assets/images/frota/identidade-oficial/03_kl_caminhao_carga_lona_azul_logo_oficial.png" alt="Carreta com carga protegida por lona" loading="lazy" decoding="async" /><figcaption>Carga protegida</figcaption></figure>
-          <figure><img src="assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial.png" alt="Caminhão em galpão industrial" loading="lazy" decoding="async" /><figcaption>Operação industrial</figcaption></figure>
-          <figure><img src="assets/images/frota/identidade-oficial/08_kl_caminhao_container_logo_oficial.png" alt="Caminhão transportando contêiner" loading="lazy" decoding="async" /><figcaption>Contêiner e grande porte</figcaption></figure>
+          <figure class="heavy-feature"><picture><source srcset="assets/images/frota/identidade-oficial/03_kl_caminhao_estrutura_noturna_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/03_kl_caminhao_estrutura_noturna_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/03_kl_caminhao_estrutura_noturna_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/03_kl_caminhao_estrutura_noturna_logo_oficial.png" alt="Caminhão da K.L Transporte Express transportando estrutura metálica" loading="lazy" decoding="async" width="1448" height="1086" /></picture><figcaption>Estruturas metálicas</figcaption></figure>
+          <figure><picture><source srcset="assets/images/frota/identidade-oficial/03_kl_caminhao_carga_lona_azul_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/03_kl_caminhao_carga_lona_azul_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/03_kl_caminhao_carga_lona_azul_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/03_kl_caminhao_carga_lona_azul_logo_oficial.png" alt="Carreta com carga protegida por lona" loading="lazy" decoding="async" width="1448" height="1086" /></picture><figcaption>Carga protegida</figcaption></figure>
+          <figure><picture><source srcset="assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial.png" alt="Caminhão em galpão industrial" loading="lazy" decoding="async" width="1448" height="1086" /></picture><figcaption>Operação industrial</figcaption></figure>
+          <figure><picture><source srcset="assets/images/frota/identidade-oficial/08_kl_caminhao_container_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/08_kl_caminhao_container_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/08_kl_caminhao_container_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/08_kl_caminhao_container_logo_oficial.png" alt="Caminhão transportando contêiner" loading="lazy" decoding="async" width="1448" height="1086" /></picture><figcaption>Contêiner e grande porte</figcaption></figure>
         </div>
       </div>
     </section>
@@ -272,9 +286,9 @@
       </div>
 
       <div class="proof-grid reveal">
-        <figure class="proof-large"><img src="assets/images/frota/identidade-oficial/04_kl_frota_motos_card_logo_oficial.png" alt="Frota de motos disponível para operações da K.L Transporte Express" loading="lazy" decoding="async" /><figcaption><strong>Motos</strong><span>Agilidade para pequenos volumes e urgências.</span></figcaption></figure>
-        <figure><img src="assets/images/frota/identidade-oficial/07_kl_furgao_carga_logo_oficial.png" alt="Compartimento traseiro de van da K.L Transporte Express" loading="lazy" decoding="async" /><figcaption><strong>Van / Furgão</strong><span>Carga fechada e protegida.</span></figcaption></figure>
-        <figure><img src="assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial.png" alt="Caminhão após carregamento" loading="lazy" decoding="async" /><figcaption><strong>Caminhões</strong><span>Operações de maior porte.</span></figcaption></figure>
+        <figure class="proof-large"><picture><source srcset="assets/images/frota/identidade-oficial/04_kl_frota_motos_card_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/04_kl_frota_motos_card_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/04_kl_frota_motos_card_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/04_kl_frota_motos_card_logo_oficial.png" alt="Frota de motos disponível para operações da K.L Transporte Express" loading="lazy" decoding="async" width="1448" height="1086" /></picture><figcaption><strong>Motos</strong><span>Agilidade para pequenos volumes e urgências.</span></figcaption></figure>
+        <figure><picture><source srcset="assets/images/frota/identidade-oficial/07_kl_furgao_carga_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/07_kl_furgao_carga_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/07_kl_furgao_carga_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/07_kl_furgao_carga_logo_oficial.png" alt="Compartimento traseiro de van da K.L Transporte Express" loading="lazy" decoding="async" width="1448" height="1086" /></picture><figcaption><strong>Van / Furgão</strong><span>Carga fechada e protegida.</span></figcaption></figure>
+        <figure><picture><source srcset="assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial-480.webp 480w, assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial-768.webp 768w, assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial.webp 1280w" sizes="(max-width:700px) calc(100vw - 36px), (max-width:980px) calc(100vw - 48px), 768px" type="image/webp" /><img src="assets/images/frota/identidade-oficial/02_kl_caminhao_galpao_carga_logo_oficial.png" alt="Caminhão após carregamento" loading="lazy" decoding="async" width="1448" height="1086" /></picture><figcaption><strong>Caminhões</strong><span>Operações de maior porte.</span></figcaption></figure>
       </div>
     </section>
 
@@ -333,7 +347,7 @@
 
   <footer class="site-footer" id="contato">
     <div class="footer-brand">
-      <img class="footer-logo" src="assets/images/branding/identidade-oficial/06_kl_logo_horizontal_transparente.png" alt="K.L Transporte Express" loading="lazy" decoding="async" />
+      <img class="footer-logo" src="assets/images/branding/identidade-oficial/06_kl_logo_horizontal_web.png" alt="K.L Transporte Express" loading="lazy" decoding="async" width="800" height="152" />
       <span>R. Dr. Gastão da Rocha Leão, 683 · Cidade Jardim · Campinas-SP · CEP 13050-400</span>
     </div>
     <div>
@@ -354,8 +368,12 @@
     <span>Orçamento</span>
   </a>
 
+  <a class="instagram-float" href="https://www.instagram.com/transporte_campinas?utm_source=qr&amp;igsh=OTY5NjE4eW45anZz&amp;igsi=OTY5NjE4eW45anZz" target="_blank" rel="noopener" aria-label="Abrir Instagram da K.L Transporte Express">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle></svg>
+    <span>Instagram</span>
+  </a>
+
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.motion-strip{display:none}</style></noscript>
-  <script>document.documentElement.classList.add('js-motion');</script>
-  <script src="assets/js/main.js" onerror="document.documentElement.classList.remove('js-motion')"></script>
+  <script src="assets/js/main.js?v=20260918-final1" onerror="document.documentElement.classList.remove('js-motion', 'js-nav')"></script>
 </body>
 </html>
