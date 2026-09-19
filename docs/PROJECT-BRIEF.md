@@ -5,7 +5,7 @@ Criar uma landing page simples, rápida e orientada à conversão para WhatsApp.
 
 ## Marca
 - Nome comercial: K.L Transporte Express
-- Instagram: @transporte_campinas
+- Instagram: @kltransporteexpress
 - Base: Bonfim, Campinas-SP
 - WhatsApp: +55 19 98104-5820
 - E-mail: kltransporteexpress@gmail.com
