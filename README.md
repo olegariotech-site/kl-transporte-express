@@ -2,6 +2,8 @@
 
 Landing page comercial da **K.L Transporte Express**, criada pela **Olegario Tech** com foco em conversão para WhatsApp.
 
+Site oficial: https://kltransporteexpress.com.br
+
 ## Objetivo da V1
 
 Apresentar a operação de forma simples e profissional e conduzir o visitante para uma nova cotação. Os serviços não têm preço fixo: rota, carga, veículo e condições do transporte são avaliados a cada solicitação.
