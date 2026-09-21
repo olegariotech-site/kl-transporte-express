@@ -1,3 +1,155 @@
+// Consentimento independente da interface comercial: falhas de UI não liberam tags.
+(() => {
+  const GA4_MEASUREMENT_ID = ''; // Inserir somente o ID oficial. Ver docs/COOKIES-GA4.md.
+  const CONSENT_KEY = 'kl_cookie_consent';
+  const CONSENT_VERSION = 1;
+  const banner = document.querySelector('#cookie-banner');
+  const dialog = document.querySelector('#cookie-preferences');
+  const analyticsInput = document.querySelector('#cookie-analytics');
+  const status = document.querySelector('#cookie-status');
+  if (!banner || !dialog || !analyticsInput) return;
+
+  const parseConsent = (raw) => {
+    try {
+      const value = JSON.parse(raw);
+      return value?.version === CONSENT_VERSION &&
+        ['granted', 'denied'].includes(value.analytics) &&
+        typeof value.updatedAt === 'string' && Number.isFinite(Date.parse(value.updatedAt)) ? value : null;
+    } catch { return null; }
+  };
+  const readConsent = () => {
+    try { return parseConsent(localStorage.getItem(CONSENT_KEY)); }
+    catch { return null; }
+  };
+  let consent = readConsent();
+  let analyticsState = 'denied';
+  let tagRequested = false;
+  let returnFocus = null;
+  const hasOfficialId = /^G-[A-Z0-9]+$/.test(GA4_MEASUREMENT_ID);
+
+  // Basic Consent Mode: a fila é local; nenhum script/ping é carregado sem opt-in.
+  const queue = function () { window.dataLayer.push(arguments); };
+  if (hasOfficialId) {
+    window['ga-disable-' + GA4_MEASUREMENT_ID] = true;
+    window.dataLayer = window.dataLayer || [];
+    queue('consent', 'default', {
+      analytics_storage: 'denied', ad_storage: 'denied',
+      ad_user_data: 'denied', ad_personalization: 'denied'
+    });
+  }
+  const clearAnalyticsCookies = () => {
+    // Somente cookies GA deste site; nunca remove preferências ou cookies de terceiros.
+    const names = document.cookie.split(';').map(part => part.trim().split('=')[0])
+      .filter(name => name === '_ga' || name.startsWith('_ga_'));
+    const parts = location.hostname.split('.');
+    const domains = ['', ...parts.map((_, index) => parts.slice(index).join('.'))];
+    names.forEach(name => domains.forEach(domain => {
+      document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax${domain ? '; domain=' + domain : ''}`;
+    }));
+  };
+  const applyAnalytics = () => {
+    const next = consent?.analytics === 'granted' ? 'granted' : 'denied';
+    analyticsState = next;
+    if (!hasOfficialId) return;
+    window['ga-disable-' + GA4_MEASUREMENT_ID] = next !== 'granted';
+    if (next !== 'granted') {
+      if (tagRequested) queue('consent', 'update', { analytics_storage: 'denied' });
+      clearAnalyticsCookies();
+      return;
+    }
+    queue('consent', 'update', { analytics_storage: 'granted' });
+    if (tagRequested) return;
+    tagRequested = true;
+    window.gtag = queue;
+    queue('js', new Date());
+    queue('config', GA4_MEASUREMENT_ID, {
+      allow_google_signals: false, allow_ad_personalization_signals: false,
+      cookie_path: '/', cookie_domain: location.hostname,
+      // Não incluir query string/hash, que podem conter dados de cotação.
+      page_location: location.origin + location.pathname
+    });
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA4_MEASUREMENT_ID);
+    script.id = 'kl-ga4';
+    document.head.append(script);
+  };
+
+  const updateBannerSpace = () => {
+    document.documentElement.style.setProperty('--cookie-banner-height', `${banner.hidden ? 0 : Math.ceil(banner.getBoundingClientRect().height)}px`);
+  };
+  const render = () => {
+    banner.hidden = !!consent;
+    analyticsInput.checked = consent?.analytics === 'granted';
+    document.body.classList.toggle('cookie-banner-visible', !banner.hidden);
+    updateBannerSpace();
+  };
+  const closePreferences = () => {
+    if (dialog.open) dialog.close();
+  };
+  const openPreferences = (trigger) => {
+    returnFocus = trigger;
+    analyticsInput.checked = consent?.analytics === 'granted';
+    dialog.showModal();
+  };
+  const saveConsent = (analytics) => {
+    consent = { version: CONSENT_VERSION, analytics, updatedAt: new Date().toISOString() };
+    let saved = true;
+    try { localStorage.setItem(CONSENT_KEY, JSON.stringify(consent)); }
+    catch { saved = false; }
+    // Bloquear envio antes de qualquer atualização visual ao retirar autorização.
+    applyAnalytics();
+    const bannerHadFocus = banner.contains(document.activeElement);
+    render();
+    closePreferences();
+    if (bannerHadFocus) document.querySelector('.footer-privacy [data-cookie-preferences]')?.focus({ preventScroll: true });
+    status.textContent = (analytics === 'granted' ? 'Preferência salva: analíticos autorizados.' : 'Preferência salva: analíticos recusados.') +
+      (saved ? '' : ' O navegador bloqueou o armazenamento. A escolha vale apenas nesta página.');
+  };
+  document.querySelectorAll('[data-cookie-preferences]').forEach(button => {
+    button.hidden = false;
+    button.addEventListener('click', () => openPreferences(button));
+  });
+  document.querySelectorAll('[data-cookie-choice]').forEach(button => {
+    button.addEventListener('click', () => saveConsent(button.dataset.cookieChoice));
+  });
+  document.querySelector('[data-cookie-save]').addEventListener('click', () => saveConsent(analyticsInput.checked ? 'granted' : 'denied'));
+  document.querySelector('[data-cookie-close]').addEventListener('click', closePreferences);
+  // O dialog nativo oferece modal, Escape e contenção de foco. Fechar não salva.
+  dialog.addEventListener('close', () => {
+    const target = returnFocus?.getClientRects().length ? returnFocus : document.querySelector('.footer-privacy [data-cookie-preferences]');
+    target?.focus({ preventScroll: true });
+  });
+  dialog.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const controls = [...dialog.querySelectorAll('button, input, a[href]')].filter(el => !el.disabled && el.getClientRects().length);
+    const first = controls[0], last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
+  window.addEventListener('storage', event => {
+    if (event.key !== CONSENT_KEY && event.key !== null) return;
+    consent = readConsent();
+    applyAnalytics();
+    render();
+  });
+  window.addEventListener('pageshow', event => {
+    if (!event.persisted) return;
+    consent = readConsent();
+    applyAnalytics();
+    render();
+  });
+  document.addEventListener('click', event => {
+    const link = event.target.closest('[data-analytics-event="google_review_click"]');
+    if (!link || analyticsState !== 'granted' || !hasOfficialId || !tagRequested) return;
+    queue('event', 'google_review_click', { send_to: GA4_MEASUREMENT_ID, location: link.dataset.analyticsLocation });
+  });
+  if ('ResizeObserver' in window) new ResizeObserver(updateBannerSpace).observe(banner);
+  window.addEventListener('resize', updateBannerSpace, { passive: true });
+  applyAnalytics();
+  render();
+})();
+
 (() => {
   try {
 

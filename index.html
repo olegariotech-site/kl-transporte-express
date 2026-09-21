@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js-motion', 'js-nav');</script>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260918-final1" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260921-privacy1" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/identidade-oficial/14_kl_favicon_32.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="assets/images/branding/identidade-oficial/13_kl_favicon_512.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/branding/identidade-oficial/15_kl_apple_touch_icon_180.png" />
@@ -335,6 +335,18 @@
         <button class="button button-submit" type="submit">Abrir solicitação no WhatsApp <span aria-hidden="true">→</span></button>
       </form>
     </section>
+
+    <section class="google-review" aria-labelledby="review-title">
+      <div>
+        <p class="review-eyebrow">SUA EXPERIÊNCIA IMPORTA</p>
+        <h2 id="review-title">Já utilizou a K.L?</h2>
+        <p>Compartilhe sua experiência no Google. Sua avaliação ajuda outras pessoas e empresas a conhecerem o trabalho da K.L Transporte Express.</p>
+      </div>
+      <a class="review-button" href="https://g.page/r/CQbD5_WnJjTnECE/review" target="_blank" rel="noopener noreferrer" aria-label="Avaliar a K.L Transporte Express no Google (abre em nova aba)" data-analytics-event="google_review_click" data-analytics-location="review_section">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="m12 3 2.8 5.7 6.3.9-4.5 4.4 1.1 6.2-5.7-3-5.7 3 1.1-6.2L3.2 9.6l6.3-.9Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        Avaliar no Google
+      </a>
+    </section>
   </main>
 
   <footer class="site-footer" id="contato">
@@ -352,6 +364,11 @@
       <span>Sáb · 08h–12h</span>
       <span>Dom · fechado</span>
     </div>
+    <nav class="footer-privacy" aria-label="Avaliação e privacidade">
+      <a href="https://g.page/r/CQbD5_WnJjTnECE/review" target="_blank" rel="noopener noreferrer" aria-label="Avaliar a K.L no Google (abre em nova aba)" data-analytics-event="google_review_click" data-analytics-location="footer">Avaliar a K.L no Google</a>
+      <a href="privacidade.html">Política de Privacidade e Cookies</a>
+      <button type="button" data-cookie-preferences hidden>Configurar cookies</button>
+    </nav>
     <small>Projeto desenvolvido pela <a href="https://olegariotech.com.br/" target="_blank" rel="noopener noreferrer">Olegario Tech</a>.</small>
   </footer>
 
@@ -365,7 +382,40 @@
     <span>Instagram</span>
   </a>
 
+  <section class="cookie-banner" id="cookie-banner" aria-labelledby="cookie-banner-title" hidden>
+    <h2 id="cookie-banner-title">Cookies e privacidade</h2>
+    <p>A K.L utiliza recursos essenciais para o funcionamento do site e, com sua autorização, poderá utilizar dados analíticos para entender como o site é utilizado e melhorar a experiência. <a href="privacidade.html">Saiba mais</a>.</p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-button" data-cookie-choice="granted">Aceitar analíticos</button>
+      <button type="button" class="cookie-button" data-cookie-choice="denied">Recusar</button>
+      <button type="button" class="cookie-button cookie-preferences-button" data-cookie-preferences>Preferências</button>
+    </div>
+  </section>
+
+  <dialog class="cookie-dialog" id="cookie-preferences" aria-labelledby="cookie-dialog-title">
+    <div class="cookie-dialog-heading">
+      <h2 id="cookie-dialog-title">Preferências de cookies</h2>
+      <button type="button" class="cookie-close" data-cookie-close aria-label="Fechar preferências de cookies" autofocus>×</button>
+    </div>
+    <p>Escolha se deseja permitir recursos analíticos. Você pode mudar sua decisão a qualquer momento.</p>
+    <div class="cookie-category">
+      <h3>Essenciais <span>Sempre ativos</span></h3>
+      <p>Necessários para funcionamento básico, segurança e preferências do site.</p>
+    </div>
+    <div class="cookie-category">
+      <label class="cookie-toggle" for="cookie-analytics"><span>Analíticos</span><input type="checkbox" id="cookie-analytics" aria-describedby="cookie-analytics-help" /></label>
+      <p id="cookie-analytics-help">Desativados por padrão. Permitem futuramente utilizar Google Analytics para compreender o uso do site e melhorar desempenho e experiência.</p>
+    </div>
+    <a class="cookie-policy-link" href="privacidade.html">Política de Privacidade e Cookies</a>
+    <div class="cookie-dialog-actions">
+      <button type="button" class="cookie-button" data-cookie-choice="granted">Aceitar analíticos</button>
+      <button type="button" class="cookie-button" data-cookie-choice="denied">Recusar analíticos</button>
+      <button type="button" class="cookie-button cookie-save" data-cookie-save>Salvar preferências</button>
+    </div>
+  </dialog>
+  <p class="sr-only" id="cookie-status" role="status"></p>
+
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.motion-strip{display:none}</style></noscript>
-  <script src="assets/js/main.js?v=20260918-final2" onerror="document.documentElement.classList.remove('js-motion', 'js-nav')"></script>
+  <script src="assets/js/main.js?v=20260921-privacy1" onerror="document.documentElement.classList.remove('js-motion', 'js-nav')"></script>
 </body>
 </html>
