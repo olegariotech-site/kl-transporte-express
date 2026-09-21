@@ -661,7 +661,7 @@ picture{display:block}
 @media(min-width:981px) and (max-width:1340px){.google-review{padding-right:86px}}
 @media(max-width:980px){
   .google-review{flex-direction:column;align-items:flex-start;gap:20px;padding-right:80px}
-  .cookie-banner{width:min(620px,calc(100% - 32px))}
+  .cookie-banner{width:min(620px,calc(100% - max(16px,env(safe-area-inset-left,0px)) - max(16px,env(safe-area-inset-right,0px))))}
   /* Enquanto o aviso estiver aberto, reserva uma faixa própria para os atalhos. */
   .cookie-banner-visible .whatsapp-float,.cookie-banner-visible .instagram-float{position:fixed;margin:0;right:max(16px,env(safe-area-inset-right,0px))}
   .cookie-banner-visible .whatsapp-float{bottom:calc(var(--cookie-banner-height,260px) + 28px + env(safe-area-inset-bottom,0px))}
@@ -671,7 +671,7 @@ picture{display:block}
   .google-review{padding:28px 18px 36px}
   .google-review p{font-size:.9rem}
   .footer-privacy{gap:0 18px}
-  .cookie-banner{left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));width:calc(100% - 24px);padding:14px}
+  .cookie-banner{left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));width:calc(100% - max(12px,env(safe-area-inset-left,0px)) - max(12px,env(safe-area-inset-right,0px)));padding:14px}
   .cookie-banner p{font-size:.8rem;line-height:1.45}
   .cookie-actions{grid-template-columns:1fr 1fr;gap:6px}
   .cookie-preferences-button{grid-column:1/-1;border-color:var(--line-strong)}
