@@ -1,8 +1,8 @@
 // Consentimento independente da interface comercial: falhas de UI não liberam tags.
 (() => {
-  const GA4_MEASUREMENT_ID = ''; // Inserir somente o ID oficial. Ver docs/COOKIES-GA4.md.
+  const GA4_MEASUREMENT_ID = 'G-WD9YYDMBTQ'; // Propriedade oficial K.L Transporte Express.
   const CONSENT_KEY = 'kl_cookie_consent';
-  const CONSENT_VERSION = 1;
+  const CONSENT_VERSION = 2;
   const banner = document.querySelector('#cookie-banner');
   const dialog = document.querySelector('#cookie-preferences');
   const analyticsInput = document.querySelector('#cookie-analytics');
@@ -139,10 +139,40 @@
     applyAnalytics();
     render();
   });
+  const trackEvent = (name, params = {}) => {
+    if (analyticsState !== 'granted' || !hasOfficialId || !tagRequested) return false;
+    queue('event', name, { send_to: GA4_MEASUREMENT_ID, ...params });
+    return true;
+  };
+  window.klTrackEvent = trackEvent;
+
+  const eventLocation = (link) => {
+    if (link.dataset.analyticsLocation) return link.dataset.analyticsLocation;
+    if (link.classList.contains('whatsapp-float') || link.classList.contains('instagram-float')) return 'floating_button';
+    if (link.closest('.hero')) return 'hero';
+    if (link.closest('#empresas')) return 'business_section';
+    if (link.closest('.quote-direct')) return 'quote_direct';
+    if (link.closest('.site-footer')) return 'footer';
+    return location.pathname === '/privacidade.html' ? 'privacy_page' : 'site';
+  };
+
   document.addEventListener('click', event => {
-    const link = event.target.closest('[data-analytics-event="google_review_click"]');
-    if (!link || analyticsState !== 'granted' || !hasOfficialId || !tagRequested) return;
-    queue('event', 'google_review_click', { send_to: GA4_MEASUREMENT_ID, location: link.dataset.analyticsLocation });
+    const link = event.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    const where = eventLocation(link);
+
+    if (link.matches('[data-analytics-event="google_review_click"]')) {
+      trackEvent('google_review_click', { location: where });
+    } else if (href.startsWith('https://wa.me/5519981045820')) {
+      trackEvent('whatsapp_click', { location: where });
+    } else if (href.startsWith('tel:')) {
+      trackEvent('phone_click', { location: where });
+    } else if (href.includes('instagram.com/kltransporteexpress')) {
+      trackEvent('instagram_click', { location: where });
+    } else if (href.startsWith('mailto:')) {
+      trackEvent('email_click', { location: where });
+    }
   });
   if ('ResizeObserver' in window) new ResizeObserver(updateBannerSpace).observe(banner);
   window.addEventListener('resize', updateBannerSpace, { passive: true });
@@ -359,6 +389,7 @@
         ].join('\n');
 
         const url = `https://wa.me/5519981045820?text=${encodeURIComponent(message)}`;
+        window.klTrackEvent?.('generate_lead', { form_name: 'quote_form' });
         window.location.href = url;
       });
     }
