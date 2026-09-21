@@ -60,8 +60,8 @@
     </section>
     <section aria-labelledby="privacy-analytics">
       <h2 id="privacy-analytics">Recursos analíticos opcionais</h2>
-      <p>Nesta versão, o Google Analytics não está instalado nem coleta eventos. O site está preparado para uma futura integração, que somente poderá carregar após uma autorização para analíticos.</p>
-      <p>Se esse recurso for ativado futuramente, sua finalidade será compreender a utilização do site, como visitas e cliques, e melhorar desempenho e experiência. Os analíticos ficam desativados por padrão. Recusar não impede utilizar o site, pedir uma cotação ou acessar os canais de contato.</p>
+      <p>O site utiliza Google Analytics 4 (GA4) como recurso analítico opcional. A tag do GA4 permanece bloqueada por padrão e somente é carregada depois que você autoriza a categoria “Analíticos”.</p>
+      <p>Quando autorizado, o GA4 pode registrar métricas de navegação e eventos configurados no site, como visualizações, interações e cliques em canais de contato e avaliação. O conteúdo digitado nos campos da cotação e a mensagem montada para o WhatsApp não são enviados ao GA4. Recusar não impede utilizar o site, pedir uma cotação ou acessar os canais de contato.</p>
     </section>
     <section aria-labelledby="privacy-choices">
       <h2 id="privacy-choices">Como alterar sua escolha</h2>
@@ -72,7 +72,7 @@
     <section aria-labelledby="privacy-external">
       <h2 id="privacy-external">Serviços e links externos</h2>
       <p>WhatsApp, Instagram e Google possuem políticas próprias. Ao abrir esses links, você passa a utilizar o serviço escolhido, conforme as regras e configurações dele. O botão de avaliação abre o Google apenas quando você clica.</p>
-      <p>O site é hospedado no GitHub Pages e utiliza fontes do Google Fonts. Esses serviços recebem os dados técnicos da conexão necessários para entregar as páginas e as fontes, como o endereço IP. O carregamento de fontes é separado da futura integração analítica.</p>
+      <p>O site é hospedado no GitHub Pages e utiliza fontes do Google Fonts. Esses serviços recebem os dados técnicos da conexão necessários para entregar as páginas e as fontes, como o endereço IP. O carregamento de fontes é separado do Google Analytics.</p>
     </section>
     <section aria-labelledby="privacy-contact">
       <h2 id="privacy-contact">Contato e atualizações</h2>
@@ -136,7 +136,7 @@
     </div>
     <div class="cookie-category">
       <label class="cookie-toggle" for="cookie-analytics"><span>Analíticos</span><input type="checkbox" id="cookie-analytics" aria-describedby="cookie-analytics-help" /></label>
-      <p id="cookie-analytics-help">Desativados por padrão. Permitem futuramente utilizar Google Analytics para compreender o uso do site e melhorar desempenho e experiência.</p>
+      <p id="cookie-analytics-help">Desativados por padrão. Permitem utilizar Google Analytics 4 para compreender o uso do site e melhorar desempenho e experiência.</p>
     </div>
     <a class="cookie-policy-link" href="privacidade.html">Política de Privacidade e Cookies</a>
     <div class="cookie-dialog-actions">
@@ -148,6 +148,6 @@
   <p class="sr-only" id="cookie-status" role="status"></p>
 
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.motion-strip{display:none}</style></noscript>
-  <script src="assets/js/main.js?v=20260921-privacy1" onerror="document.documentElement.classList.remove('js-motion', 'js-nav')"></script>
+  <script src="assets/js/main.js?v=20260921-ga4-1" onerror="document.documentElement.classList.remove('js-motion', 'js-nav')"></script>
 </body>
 </html>
