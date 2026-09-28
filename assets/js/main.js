@@ -164,6 +164,8 @@
 
     if (link.matches('[data-analytics-event="google_review_click"]')) {
       trackEvent('google_review_click', { location: where });
+    } else if (link.matches('[data-analytics-event="google_reviews_click"]')) {
+      trackEvent('google_reviews_click', { location: where });
     } else if (href.startsWith('https://wa.me/5519981045820')) {
       trackEvent('whatsapp_click', { location: where });
     } else if (href.startsWith('tel:')) {
