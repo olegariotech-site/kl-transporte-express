@@ -170,6 +170,8 @@
       trackEvent('phone_click', { location: where });
     } else if (href.includes('instagram.com/kltransporteexpress')) {
       trackEvent('instagram_click', { location: where });
+    } else if (link.matches('[data-analytics-event="maps_click"]')) {
+      trackEvent('maps_click', { location: where });
     } else if (href.startsWith('mailto:')) {
       trackEvent('email_click', { location: where });
     }
